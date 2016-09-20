@@ -1,0 +1,38 @@
+body{background:#f3f1f4;}
+#top{width:100%;background:#f3f1f4;padding:38px 0 38px;padding-left:120px;}
+#top .msg{display:inline-block;color:white;background:#555555;width:140px;height:30px;border-radius:12px;line-height: 30px;text-align: center;font-size:14px;margin-left:100px;}
+#top .msg a{color:#fffaa8;}
+#loginList{width:100%;height:500px;padding-left:120px;}
+.login{width:450px;min-height: 420px;background:#eeecef;border:1px solid #e1e0e2;}
+.login .log1{margin:27px 0 0 20px;width:400px;height:28px;border-bottom:1px solid #dddddd;}
+.login .log1 a{color:#d01320;font-size:18px;margin-right:15px;}
+.login .border-w{width:400px;border-bottom: 1px solid white;margin-left:20px;}
+.login #username,#password{width:250px;height:32px;border-radius:7px;margin-top:30px;margin-left:10px;border: 1px solid #e5e3e5;text-indent: 10px;}
+.login .label1{margin-left:40px;}
+.login .label2{margin-left:70px;}
+.login .log{margin:20px 0 0 102px;position:relative;}
+.login .log #btn{width:150px;height:40px;color:white;background:#ffab55;font-size:16px;border-radius:7px;border:none;}
+.login .log a{color:red;position: absolute;left:160px;top:24px;font-size:12px;}
+.login .border-g{width:400px;border-bottom: 1px solid #e1e0e2;margin:20px 0 0 20px;}
+.login .log-else{width:400px;border-top:1px solid white ;margin-left:20px;}
+.login .log-else p{margin-top:10px;}
+.login .log-else dl{width:96px;height:25px;margin-right:8px;margin-top:10px;padding-top:4px;float:left;border:1px solid #cfc8c8;line-height: 20px;text-align: center;}
+.login .log-else dl dt,.login .log-else dl dd{float:left;}
+.login .log-else dl dt{padding:0 4px;width:32px;background:#f7ebf1;}
+.login .log-else dl dd a{color:#000;display: inline-block;height:25px;width:54px;text-align: center;}
+.login .log-else dl dd a:hover{background:#f8870e;color:white;}
+.login,.logImg{float:left;}
+.logImg{margin:28px 0 0 120px;}
+.kefu{position:absolute;top:250px;right:0;background:#fff;border:1px solid #f1b6c6;width:100px;height:200px;border-top:#e29257 2px solid;}
+.kefu .kefu1{height:30px;border-bottom:solid 1px #f1b6c6;line-height:30px;}
+.kefu .kefu1 img{margin:5px 5px 0 5px;}
+.kefu .kefu1 a{color:#e29257;}
+.kefu ul{padding:0 5px;}
+.kefu ul li{padding:10px 0;border-bottom:1px dotted #f1b6c6;text-align: center;}
+.kefu .QQ a{display: inline-block;width:80px;height:20px;border-radius: 7px;background:#e63643;color:#FFFFFF;}
+.kefu .QQ a img{margin-top:2px;}
+.kefu ul .noBottom{border-bottom: none;}
+.kefu .kuaidi{background:#f3fff8;}
+.kefu .kuaidi a{color:#ff923a;font-size: 15px;}
+.kefu .noBottom .g1{color:#26890f;}
+.kefu .noBottom .g2{color:#555555;font-size: 17px;}

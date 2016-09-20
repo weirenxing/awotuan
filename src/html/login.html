@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link href="../css/reset.css" rel="stylesheet" />
+		<link href="../css/common.css" rel="stylesheet" />
+		<link href="../css/login.css" rel="stylesheet" />
+		<script src="../js/mycookie.js"></script>
+		<script src="../assets/jquery-1.12.0.js"></script>
+		<script type="text/javascript"> 
+			$(function(){
+				$('#username').focus(function () { 
+					$('#username').val(''); 
+				}) 
+				$('#password').focus(function () { 
+					$('#password').val(''); 
+				}) 
+				var s=0;
+				$('#username').on('blur',function () { 
+					
+					var str=this.value;
+					var reg = /^[a-zA-Z]\w{5,19}$/|/\w+@[a-zA-Z0-9]+\.[a-zA-Z]+/|/^1[35678]\d{9}$/;
+					var test=reg.test(str);
+					if (!test)
+					{ 
+						$('#username').val('请输入用户名、邮箱或手机登录').css('color','red'); 
+						s=0;
+					} 
+					s=1;
+				}) 
+				var s1=0;
+				$('#password').on('blur',function () { 
+					var str=this.value;
+					var reg=/^.{6,20}$/;
+					var test1=reg.test(str);
+					if(!test1){						
+						$('.ospan').html('密码不合法').css('color','red');
+						s1=0;
+					}
+					s1=1;
+				}) 
+				$('#btn').click(function () { 
+					if (s===1 && s1===1) 
+					{ alert('登陆成功！'); } 
+					else { alert('登陆失败！'); } 
+				}) 
+				
+				// 登录按钮
+				var btnLogin = document.getElementById("btn");
+				var oCheck = document.getElementById("savePwd");
+				var oUsername = document.getElementById("username");
+				var oPassword = document.getElementById("password");
+				// 获取当前页面中的 cookie
+				var username = getCookie("username");			
+				if (username)
+				{
+					oUsername.value = username;			
+				}
+	
+	
+				 btnLogin.onclick = function() {
+					if (oCheck.checked)
+						{
+							var strUsername = oUsername.value;
+							addCookie("username", strUsername);
+						}
+					}
+				})
+				
+		</script> 
+
+		
+	</head>
+	<body>
+		<div id="top">
+			<span><img src="../css/img/login-logo.png"/></span>
+			<span class='msg'>未注册？<a href="#">请注册</a></span>
+		</div>
+		<div id="loginList">
+			<div class='login'>
+			<p class="log1"><a href="#">会员登录</a><b>登录阿窝团，享受快乐生活每一天~</b></p>
+			<p class='border-w'></p>
+			<form>
+		        <p>
+		            <label for="username" class='label1'>邮箱/手机</label>
+		            <input type="text" id="username" placeholder="请输入用户名、邮箱或手机登录">
+		        </p>
+		        <p>
+		            <label for="password" class='label2'>密码</label>
+		            <input type="password" id="password"><span class="ospan"></span>
+		        </p>
+		        <p class="log">		         
+                   <label><input type="checkbox" value="记住登录名" id='savePwd'>记住登录名</label>		           
+		        </p>
+		        <p class="log">
+		            <input type='submit' value="登录" id="btn">
+		            <a href="#">忘记密码？</a>
+		        </p>		      
+		    </form>
+			<p class='border-g'></p>
+	        <div class='log-else'>
+	        	<p>你也可以用合作网站账号登录阿窝团</p>
+	        	<dl>
+	        		<dt><a href="#"><img src="../css/img/login-qq.png"/></a></dt>
+	        		<dd><a href="#">用QQ登录</a></dd>
+	        	</dl>
+	        	<dl>
+	        		<dt><a href="#"><img src="../css/img/logon-bao.png"/></a></dt>
+	        		<dd><a href="#">快捷支付</a></dd>
+	        	</dl>
+	        	<dl>
+	        		<dt><a href="#"><img src='../css/img/login-lang.png'/></a></dt>
+	        		<dd><a href="#">新浪微博</a></dd>
+	        	</dl>
+	        	<dl>
+	        		<dt><a href="#"><img src='../css/img/login360.png'/></a></dt>
+	        		<dd><a href="#">360登录</a></dd>
+	        	</dl>
+	        	<dl>
+	        		<dt><a href="#"><img src='../css/img/login-baidu.png'/></a></dt>
+	        		<dd><a href="#">百度登录</a></dd>
+	        	</dl>
+	          </div>	          
+		</div>
+		<div class="logImg"><img src="../css/img/login--.png"/></div>
+		<div class="kefu">
+			<p class="kefu1"><img src="../css/img/log-wei.png"/><a href="#">在线客服</a></p>
+			<ul>
+				<li>9:00~18:00</li>
+				<li class="QQ"><a href="#"><img src="../css/img/login-qq.png"/>在线客服</a></li>
+				<li class="kuaidi"><a href="#">自助查询</a><br/><a href="#">快递信息</a></li>
+				<li class="noBottom"><a href="#" class="g1">BOOKMARK<br><a href="#" class="g2">收藏我们</a></a></li>
+			</ul>
+		</div>
+		</div>
+		
+		
+		<div id='buttom'>
+			<div id="bottomList">
+				<dl>
+					<dt><img src="../css/img/bottom1.png" />用户帮助</dt>
+					<dd>
+						<ul>
+							<li><a href="#">玩转阿窝团</a></li>
+							<li><a href="#">常见问题</a></li>
+							<li><a href="#">服务保障计划</a></li>
+							<li><a href="#">意见与建议</a></li>
+						</ul>
+					</dd>
+				</dl>
+				
+				<dl>
+					<dt><img src="../css/img/bottom2.png" />购物相关</dt>
+					<dd>
+						<ul>
+							<li><a href="#">玩转阿窝团</a></li>
+							<li><a href="#">常见问题</a></li>
+							<li><a href="#">服务保障计划</a></li>
+							<li><a href="#">意见与建议</a></li>
+						</ul>
+					</dd>
+				</dl>
+				
+				<dl>
+					<dt><img src="../css/img/bottom3.png" />商务合作</dt>
+					<dd>
+						<ul>
+							<li><a href="#">玩转阿窝团</a></li>
+							<li><a href="#">常见问题</a></li>
+							<li><a href="#">服务保障计划</a></li>
+							<li><a href="#">意见与建议</a></li>
+						</ul>
+					</dd>
+				</dl>
+				
+				<dl>
+					<dt><img src="../css/img/bottom4.png" />公司信息</dt>
+					<dd>
+						<ul>
+							<li><a href="#">玩转阿窝团</a></li>
+							<li><a href="#">常见问题</a></li>
+							<li><a href="#">服务保障计划</a></li>
+							<li><a href="#">意见与建议</a></li>
+						</ul>
+					</dd>
+				</dl>
+				
+				<dl class="noRight">
+					<dt><img src='../css/img/bottom5.png' /><span class="tel">客服热线</span>(免长途费)</dt>
+					<dd>
+						<ul>
+							<li class="li1"><a href="#">400-6060-800</a></li>
+							<li class="li2"><a href="#">售前：<span class="img1"><img src="../css/img/login-qq.png"/></span>售后：<span class="img1"><img src="../css/img/login-qq.png"/></span></a></li>
+							<li><a href="#">（周一至周五）：9:00-18:00</a></li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+		</div>
+		<div class='bottomNav'>
+			<ul class="navs">
+				<li><a href="#">关于阿窝团</a></li>
+				<li><a href="#">联系我们</a></li>
+				<li><a href="#">诚聘英才</a></li>
+				<li><a href="#">友情链接</a></li>
+				<li><a href="#">隐私条款</a></li>
+				<li class='noRight'><a href="#">网站地图</a></li>
+			</ul>
+		</div>
+		<div class='footer'>
+			<p>Copyright @ 2010-2012 awotuan.com All Rights Reserved 版权所有  工商注册号 ：126454566488 京1515655556565iin号  京68678Ivb号 京公网安备44646416号</p>
+			<ul>
+				<li class="web web1"><a href="#">网信认证<br/>Web Trust</a></li>
+				<li class="footer360"><a href="#"><img src='../css/img/footer2.png'/></a></li>
+				<li class='web web2'><a href="#">支付宝<br/>特约商家</a></li>
+				<li class="footerYan"><a href="#"><img src="../css/img/footer4.png"/></a></li>
+			</ul>
+		</div>
+	</body>
+</html>

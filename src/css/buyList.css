@@ -1,0 +1,36 @@
+body{background: #f6f6f6;}
+#contend{width:100%;position: relative;margin:0 auto;}
+#nav ul li .now{background:#fff;color:#000;}
+
+/*kefu*/
+.kefu{position:absolute;top:60px;right:0;background:#fff;border:1px solid #f1b6c6;width:100px;height:205px;border-top:#e29257 2px solid;}
+.kefu .kefu1{height:30px;border-bottom:solid 1px #f1b6c6;line-height:30px;}
+.kefu .kefu1 img{margin:7px 5px 0 5px;}
+.kefu .kefu1 a{color:#e29257;}
+.kefu ul{padding:0 5px;}
+.kefu ul li{padding:10px 0;border-bottom:1px dotted #f1b6c6;text-align: center;}
+.kefu .QQ a{display: inline-block;width:80px;height:20px;border-radius: 7px;background:#e63643;color:#FFFFFF;}
+.kefu .QQ a img{margin-top:2px;}
+.kefu ul .noBottom{border-bottom: none;}
+.kefu .kuaidi{background:#f3fff8;}
+.kefu .kuaidi a{color:#ff923a;font-size: 15px;}
+.kefu .noBottom .g1{color:#26890f;}
+.kefu .noBottom .g2{color:#555555;font-size: 17px;}
+.kefu .topBack{width:100px;height:28px;border:1px solid #ccc;font-size:14px;color:#666666;background:#ededed;text-align: center;line-height: 28px;background: url(img/topBack.png) no-repeat 9px 10px;}
+
+/*btns*/
+.btns{width:998px;height:28px;border:1px solid #c1c1c1;margin: 0 auto;clear: both;line-height: 28px;}
+.line4{width:1000px;height:4px;background: #d4d4d4;margin: 0 auto;clear: both;}
+.btns input{margin-left: 13px;width:70px;}
+.btns .btns1{background:url(img/btns1.png) no-repeat 51px 3px;}
+.btns .btns2{background:url(img/btn2.png) no-repeat 51px 2px;}
+/*buyList*/
+.buyList{width:1000px;min-height: 334px;margin: 0 auto;}
+.buyList li{width:288px;height:310px;float: left;margin-right: 13px;border:1px solid #e4e4e4;margin-top:20px;padding:10px 15px;}
+.buyList li .tex{height:45px;overflow: hidden;font-size: 14px;line-height: 22px;font-weight:bold;}
+.buyList li .buyImg{width:288px;height:190px;border:1px solid #e29257;overflow: hidden;}
+.buyList li .price{width:288px;height:46px;line-height:46px;border-radius:0 0 5px 5px;background: #ffb270;color:#fff;font-size: 27px;border:1px solid #e29257;}
+.cost{color:#555555;margin-top: 10px;}
+.cost .red{color:red;}
+.cost .red1{margin-left: 20px;}
+.rate{margin-left:14px;} 

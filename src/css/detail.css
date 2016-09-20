@@ -1,0 +1,34 @@
+body{background: #f6f6f6;}
+#contend{width:100%;position: relative;margin:0 auto;}
+#dets{width:1000px;margin:0 auto;margin-top:29px;}
+#dets .det{width:750px;height:630px;border:1px solid #e2dee2;float:left;}
+#dets .det .tex{margin:15px 0 0 17px;font-size: 22px;line-height: 30px;}
+#dets .det .detImg{display:inline-block;border:2px solid #e29257;width:438px;height:280px;margin-left: 7px;float:left}
+#dets .det .detRight{display: inline-block;border-bottom: 1px solid #e2dee2;width:300px;height:282px;float: left;}
+#dets .det .detRight .price{width:285px;height:60px;background:#da3b22;border-radius:0 26px 0 0 ;color:white;position: relative;}
+#dets .det .detRight .price .b1{display:inline-block;width:120px;border-right: 1px solid white;margin:16px 30px;color:white;font-size: 28px;}
+#dets .det .miaosha{position: absolute;left:38px;top:-8px;}
+#dets .det .priceRight{position: absolute;right:10px;top:-8px;}
+#dets .buy{width:285px;height:60px;background:#fff7ad;line-height: 60px;text-align: center;}
+#dets .buy button{width:137px;height: 40px;background: #fc0154;border-radius: 6px;}
+#dets .buy input{width: 90px;height: 40px;background: #fafafa;border-radius: 6px;}
+#dets .people{line-height: 90px;text-align: center;}
+#dets .time{line-height: 30px;text-align: center;}
+#dets .time .timer{display:block;height:30px;line-height: 30px;clear: both;}
+#dets .time .timer span{display:inline-block;width:40px;height: 30px;background: #262626;position: relative;top:8px;}
+#dets .detMore{width: 232px;height: 540px;float: left;margin-left: 10px;}
+/*kefu*/
+.kefu{position:absolute;top:-16px;right:0;background:#fff;border:1px solid #f1b6c6;width:100px;height:205px;border-top:#e29257 2px solid;}
+.kefu .kefu1{height:30px;border-bottom:solid 1px #f1b6c6;line-height:30px;}
+.kefu .kefu1 img{margin:5px 10px 0 8px;}
+.kefu .kefu1 a{color:#e29257;}
+.kefu ul{padding:0 5px;}
+.kefu ul li{padding:10px 0;border-bottom:1px dotted #f1b6c6;text-align: center;}
+.kefu .QQ a{display: inline-block;width:80px;height:20px;border-radius: 7px;background:#e63643;color:#FFFFFF;}
+.kefu .QQ a img{margin-top:2px;}
+.kefu ul .noBottom{border-bottom: none;}
+.kefu .kuaidi{background:#f3fff8;}
+.kefu .kuaidi a{color:#ff923a;font-size: 15px;}
+.kefu .noBottom .g1{color:#26890f;}
+.kefu .noBottom .g2{color:#555555;font-size: 17px;}
+.kefu .topBack{width:100px;height:28px;border:1px solid #ccc;font-size:14px;color:#666666;background:#ededed;text-align: center;line-height: 28px;background: url(img/topBack.png) no-repeat 9px 10px;}

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link href='../css/reset.css' rel="stylesheet" />
+		<link href='../css/common.css' rel="stylesheet"/>
+		<link href="../css/detail.css" rel="stylesheet"/>
+		<link href="../css/jquery.bigerzoom.css" rel="stylesheet"/>
+		<script src="../assets/jquery-1.12.0.js"></script>
+		<script src='../js/mycookie.js'></script>
+		<script src="../js/jquery.bigerzoom.js"></script>
+		<script>
+			$(function(){
+				
+				var str = getCookie("arr");
+
+				// 用于存储所有的商品
+				var arr = [];
+				if (str != "")
+				{
+					// 说明之前 cookie 中有商品的内容
+					// 取出来转换成数组
+					arr = eval(str);
+				}
+				// 商品由 名称 和 价格组成
+				// 例如：
+				// {product: XXX, price: 180}
+
+				//var allA = document.getElementsByTagName("a");
+
+				//for (var i = 0; i < allA.length; i++)
+				//{
+					var otex=document.getElementsByClassName('tex')[0];
+					var oPrice=document.getElementsByClassName('b1')[0];
+					$('#btnBuy').click (function(){
+					// 这个是价格
+					//var oPrice = ob1.innerHTML;
+
+					// 这个商品的信息
+					//var oProduct = oPrice.previousElementSibling;
+			
+			
+					// 取出商品名字的标签对象
+					//var oSpan = oProduct.getElementsByTagName("span")[0];
+		
+					// 取出标签对象中的名字，也就是商品的名称
+
+					// 函数库中自定义的函数
+					// 添加了一个 cookie,名字是 product, 内容是 商品的信息, 过期时间是 7天后
+					//alert(oSpan.innerHTML);
+					
+					// 转换成一个
+					// var str = encodeURI(oSpan.innerHTML);
+		
+					var obj = {};
+		
+					//obj.product = oSpan.innerHTML;
+					obj.tex=otex.innerHTML;
+					obj.price = oPrice.innerHTML;
+		
+					// 将创建好的商品添加到数组中
+					arr.push(obj);
+		
+					// 将数组的内容设置到 cookie 中呢？
+					// cookie 的名字是 arr, 内容是数组中的商品，过期时间是7天以后
+					addCookie("arr", arr.toSource(), 7);
+
+
+
+					/*
+					addCookie("product", oSpan.innerHTML, 7);
+					
+					// 函数库中自定义的函数
+					// 添加了一个 cookie,名字是 price, 内容是 商品的价格, 过期时间是 7天后 
+					addCookie("price", oPrice.innerHTML, 7);
+					//*/
+					
+		
+					alert("添加成功");
+				})
+			//}
+				
+				// 实现放大镜效果
+				$('.lxzoom').lxzoom({
+					gap:10,
+					width:200,
+					height:200
+				})
+			})
+		</script>
+	</head>
+	<body>
+		<div class="top">
+			<span class="topLeft">
+				<a href="#">Hi,欢迎来到阿窝团!</a>
+				<a href="#">请登录</a>
+				<a href="#">免费注册</a>
+				<a href="#">快速登录</a>
+			</span>
+			<span class="topRight">
+				<a href="#" class='tel'>400-188-1717</a>
+				<a href="#" class='car'>购物车：0件商品</a>
+				<a href="#" class='arrow'>我的订单<img src="../css/img/arrow.png"></a>
+				<a href="#" class="star">加入收藏</a>
+				<a href="#" class="jia">关注我们</a>
+			</span>	
+		</div>
+		
+		<div id="headers">
+			<div id="header" >
+				<span><img src='../img/logo.png'></span>
+				<select><option>北京</option></select>
+				<dl>
+					<dt><img src="../img/nav1.png"></dt>
+					<dd><a href="#">品质保证</a></dd>
+				</dl>
+				<dl>
+					<dt><img src="../img/nav2.png"></dt>
+					<dd><a href="#">7天退换</a></dd>
+				</dl>
+				<dl class="noRight">
+					<dt><img src="../img/nav3.png"></dt>
+					<dd><a href="#">过期退款</a></dd>
+				</dl>
+				<div id="search">
+					<input type="text" placeholder="请输入您要查找的关键字" class='tex' />
+					<span class='seaBtn'>搜索</span>
+				</div>
+			</div>
+		</div>
+		<div id="navs">
+			<div id="nav">
+				<ul>
+					<li><a href="#">首页</a></li>
+					<li><a href="#">品牌特卖</a></li>
+					<li><a href="#" class="now ">精品网购</a></li>
+					<li><a href="#">化妆美容</a></li>
+					<li><a href="#">生活娱乐</a></li>
+					<li><a href="#">酒店旅游</a></li>
+				</ul>
+			</div>
+		</div>	
+		
+		<div id='contend'>
+			<div id="dets">
+				<div class="det">
+					<p class="tex">【独家首发+全国包邮】仅59元，尊享原价398元的2015爆款卡通时尚打底衫尊享原价398元的2015爆款卡通时尚打底衫尊享原价398元的2015爆款卡通时尚打底衫</p>
+					<div class="detImg  lxzoom"><img src='../css/img/detail.png'/><span></span></div>
+					<span class="detRight">
+						<p class='price'>
+							<b class='b1'>￥59.00</b>
+							<b>零售价：398.00元</b>
+							<i class='miaosha'><img src="../css/img/miaosha.png"/></i>
+							<i class='priceRight'><img src="../css/img/detRight.png"/></i>
+						</p>
+						<p class="buy">
+							<button>立即抢购</button>
+							<input type="button" value="加入购物车" id="btnBuy">
+						</p>
+						<p class="people">
+							已购买人数：2756
+						</p>
+						<p class="time">
+							距离团购时间还有：<br />
+							<span class="timer"><span></span>天<span></span>时<span></span>分<span></span>秒</span>
+						</p>
+					</span>					
+				</div>
+				<div class="detMore">
+					<img src="../css/img/detail1.png" />
+				</div>
+			</div>
+			<div class="kefu">
+				<p class="kefu1"><img src="../css/img/log-wei.png"/><a href="#">在线客服</a></p>
+				<ul>
+					<li>9:00~18:00</li>
+					<li class="QQ"><a href="#"><img src="../css/img/login-qq.png"/>在线客服</a></li>
+					<li class="kuaidi"><a href="#">自助查询</a><br/><a href="#">快递信息</a></li>
+					<li class="noBottom"><a href="#" class="g1">BOOKMARK<br><a href="#" class="g2">收藏我们</a></a></li>
+				</ul>
+				<p class="topBack">回到顶部</p>
+			</div>
+		</div>
+		
+		<div id='buttom'>
+			<div id="bottomList">
+				<dl>
+					<dt><img src="../css/img/bottom1.png" />用户帮助</dt>
+					<dd>
+						<ul>
+							<li><a href="#">玩转阿窝团</a></li>
+							<li><a href="#">常见问题</a></li>
+							<li><a href="#">服务保障计划</a></li>
+							<li><a href="#">意见与建议</a></li>
+						</ul>
+					</dd>
+				</dl>
+				
+				<dl>
+					<dt><img src="../css/img/bottom2.png" />购物相关</dt>
+					<dd>
+						<ul>
+							<li><a href="#">玩转阿窝团</a></li>
+							<li><a href="#">常见问题</a></li>
+							<li><a href="#">服务保障计划</a></li>
+							<li><a href="#">意见与建议</a></li>
+						</ul>
+					</dd>
+				</dl>
+				
+				<dl>
+					<dt><img src="../css/img/bottom3.png" />商务合作</dt>
+					<dd>
+						<ul>
+							<li><a href="#">玩转阿窝团</a></li>
+							<li><a href="#">常见问题</a></li>
+							<li><a href="#">服务保障计划</a></li>
+							<li><a href="#">意见与建议</a></li>
+						</ul>
+					</dd>
+				</dl>
+				
+				<dl>
+					<dt><img src="../css/img/bottom4.png" />公司信息</dt>
+					<dd>
+						<ul>
+							<li><a href="#">玩转阿窝团</a></li>
+							<li><a href="#">常见问题</a></li>
+							<li><a href="#">服务保障计划</a></li>
+							<li><a href="#">意见与建议</a></li>
+						</ul>
+					</dd>
+				</dl>
+				
+				<dl class="noRight">
+					<dt><img src='../css/img/bottom5.png' /><span class="tel">客服热线</span>(免长途费)</dt>
+					<dd>
+						<ul>
+							<li class="li1"><a href="#">400-6060-800</a></li>
+							<li class="li2"><a href="#">售前：<span class="img1"><img src="../css/img/login-qq.png"/></span>售后：<span class="img1"><img src="../css/img/login-qq.png"/></span></a></li>
+							<li><a href="#">（周一至周五）：9:00-18:00</a></li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+		</div>
+		<div class='bottomNav'>
+			<ul class="navs">
+				<li><a href="#">关于阿窝团</a></li>
+				<li><a href="#">联系我们</a></li>
+				<li><a href="#">诚聘英才</a></li>
+				<li><a href="#">友情链接</a></li>
+				<li><a href="#">隐私条款</a></li>
+				<li class='noRight'><a href="#">网站地图</a></li>
+			</ul>
+		</div>
+		<div class='footer'>
+			<p>Copyright @ 2010-2012 awotuan.com All Rights Reserved 版权所有  工商注册号 ：126454566488 京1515655556565iin号  京68678Ivb号 京公网安备44646416号</p>
+			<ul>
+				<li class="web web1"><a href="#">网信认证<br/>Web Trust</a></li>
+				<li class="footer360"><a href="#"><img src='../css/img/footer2.png'/></a></li>
+				<li class='web web2'><a href="#">支付宝<br/>特约商家</a></li>
+				<li class="footerYan"><a href="#"><img src="../css/img/footer4.png"/></a></li>
+			</ul>
+		</div>
+	</body>
+</html>

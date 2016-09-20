@@ -1,0 +1,70 @@
+.piture{
+		position: relative;
+		width:650px;
+		height:250px;
+	}
+.myfocus {        
+        width: 650px;
+    }
+    
+    .bigpic {
+        height: 250px;
+    }
+    
+    .bigpic li {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .bigpic li img{width:650px;height: 250px;}
+    .smallpic {
+        margin-top: 10px;
+    }
+    
+    .smallpic li {
+        display: inline-block;
+    }
+    
+    .smallpic img {
+        width: 120px;
+    }
+    
+    .prev,
+    .next {
+        position: absolute;
+        left: 5px;
+        top: 50%;
+        margin-top: -40px;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.2);
+        font-size: 30px;
+        color: #ccc;
+        text-decoration: none;
+    }
+    
+    .next {
+        left: auto;
+        right: 5px;
+    }
+    
+    .prev:hover,
+    .next:hover {
+        background-color: rgba(0, 0, 0, .5);
+    }
+    
+    .nav1 {
+				position: absolute;
+				right: 150px;
+				top: 30px;
+			}
+	.nav1 ul li {
+				width: 10px;
+				height: 10px;
+				border: 1px solid #F00;
+				float: left;
+				margin-left:15px;
+				border-radius: 10px;
+			}
+	.nav1 ul li.select{
+				background: #fff;
+			}

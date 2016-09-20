@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link href="css/reset.css" rel="stylesheet" />
+		<link href='css/common.css' rel="stylesheet"/>
+		<link href='css/jquery.myFocus.css' rel="stylesheet" />
+		<link href="css/index.css" rel="stylesheet" />
+		<script src="js/common1.js"></script>
+		<script src="assets/jquery-1.12.0.js"></script>
+		<script src='js/jquery.myFocus.js'></script>
+		<script>
+			$(function(){
+				//鼠标滑过首页时出现窗口
+				$('.first').on('mouseenter',function(){
+					$('.window').show();
+				});
+				
+				//鼠标滑过select热门城市时出现弹窗
+				$('#over').on('mouseover',function(){
+					$('.city').show();
+				})
+				//点击关闭按钮隐藏弹窗
+				$('.city').on('click','.btnClose',function(){
+					$('.city').hide();
+				})
+				
+				//轮播图
+				$('.myfocus').myFocus({
+	                 imgs:['img/slide1.jpg','img/slide2.jpg','img/slide3.jpg']
+	           });
+	           
+	           //客服小窗口随滚动条移动，
+				$(window).scroll(function() {		
+					var top = $(window).scrollTop();			
+						$(".kefu").css({ top: top + "px" });			
+				});
+				//回到顶部
+				$(".topBack").click(function(){
+					$('.kefu').animate({top:0},1000);
+					$('body,html').animate({'scrollTop':0},1000);
+				})
+				
+				//物品楼层
+				var $floorList = $('.floorList');
+				$.ajax({
+					url:'floorList.json',
+					dataType:'json',
+					success:function(res){						
+						var $ul = $('<ul/>');
+						$.each(res,function(idx,item){
+							var html = '<p class="tex">'+item.title+'</p>' 
+								+ '<p class="buyImg" >'+'<img src="'+item.imgurl+'" />'+'</p>'
+								+ '<p class="price">'+item.price+'<button class="btn1">'+"抢购"+'</button>'+'</p>'
+								+'<p class="cost">'+"原价："+'<del>'+item.oldprice+'</del>'+'<span class="rate">'+"折扣："
+								+'<span class="red">'+item.off+'</span>'+"折"+'<span class="red red1">'
+								+item.buyCount+'</span>'+"人已购买"+"</span>"+'</p>';
+							$('<li/>').html(html).appendTo($ul);
+						});	
+						$floorList.append($ul);
+					}
+				})				
+				var $floorList4 = $('.floorList4');
+				$.ajax({
+					url:'floor4.json',
+					dataType:'json',					
+					success:function(res){						
+						var $ul = $('<ul/>');
+						$.each(res,function(idx,item){
+							var html = '<p class="tex">'+item.title+'</p>' 
+								+ '<p class="buyImg" >'+'<img src="'+item.imgurl+'" />'+'</p>'
+								+ '<p class="price">'+item.price+'<button class="btn1">'+"抢购"+'</button>'+'</p>'
+								+'<p class="cost">'+"原价："+'<del>'+item.oldprice+'</del>'+'<span class="rate">'+"折扣："
+								+'<span class="red">'+item.off+'</span>'+"折"+'<span class="red red1">'
+								+item.buyCount+'</span>'+"人已购买"+"</span>"+'</p>';
+							$('<li/>').html(html).appendTo($ul);
+						});	
+						$floorList4.append($ul);
+					}
+				})
+			})
+			
+		</script>
+	</head>
+	<body>
+		<div class="top">
+			<span class="topLeft">
+				<a href="#">Hi,欢迎来到阿窝团!</a>
+				<a href="#">请登录</a>
+				<a href="#">免费注册</a>
+				<a href="#">快速登录</a>
+			</span>
+			<span class="topRight">
+				<a href="#" class='tel'>400-188-1717</a>
+				<a href="#" class='car'>购物车：0件商品</a>
+				<a href="#" class='arrow'>我的订单<img src="css/img/arrow.png"></a>
+				<a href="#" class="star">加入收藏</a>
+				<a href="#" class="jia">关注我们</a>
+			</span>	
+		</div>
+		
+		<div id="headers">
+			<div id="header" >
+				<span><img src='img/logo.png'></span>
+				<select id="over"><option>北京</option></select>
+				<div class="city">
+					<p class="title">城市列表<button class="btnClose">关闭&times;</button></p>
+					<p class="citys">
+						<span class='p1'>热门</span><span class="cityList"><a href="#">北京</a><a href="#">北京</a><a href="#">北京</a>
+							<a href="#">北京</a><a href="#">上海</a><a href="#">湛江</a><a href="#">武汉</a>
+							<a href="#">天津</a><a href="#">南宁</a><a href="#">杭州</a><a href="#">南宁</a>
+							<a href="#">广州</a><a href="#">玉林</a><a href="#">沈阳</a><a href="#">天津</a>
+							<a href="#">东莞</a><a href="#">西安</a><a href="#">北京</a><a href="#">深圳</a>
+							<a href="#">厦门</a><a href="#">西宁</a><a href="#">合肥</a><a href="#">珠海</a>
+							<a href="#">深圳</a><a href="#">海口</a><a href="#">成都</a><a href="#">北京</a>
+							<a href="#">武汉</a><a href="#">桂林</a><a href="#">北京</a></span>
+						<span class="p2">拼音</span><span class="letter"><a href="#">a</a><a href="#">b</a><a href="#">c</a>
+							<a href="#">d</a><a href="#">e</a><a href="#">f</a><a href="#">g</a>
+							<a href="#">h</a><a href="#">i</a><a href="#">j</a><a href="#">k</a>
+							<a href="#">l</a><a href="#">m</a><a href="#">n</a><a href="#">p</a>
+							<a href="#">q</a><a href="#">r</a><a href="#">s</a><a href="#">t</a>
+							<a href="#">a</a><a href="#">r</a><a href="#">g</a><a href="#">v</a>
+							<a href="#">w</a><a href="#">x</a></span>
+					</p>
+				</div>
+				<dl>
+					<dt><img src="img/nav1.png"></dt>
+					<dd><a href="#">品质保证</a></dd>
+				</dl>
+				<dl>
+					<dt><img src="img/nav2.png"></dt>
+					<dd><a href="#">7天退换</a></dd>
+				</dl>
+				<dl class="noRight">
+					<dt><img src="img/nav3.png"></dt>
+					<dd><a href="#">过期退款</a></dd>
+				</dl>
+				<div id="search">
+					<input type="text" placeholder="请输入您要查找的关键字" class='tex' />
+					<span class='seaBtn'>搜索</span>
+				</div>
+			</div>
+		</div>
+		
+		<div id="navs">
+			<div id="nav">
+				<ul>
+					<li><a href="#" class="first">首页</a></li>
+					<li><a href="#">品牌特卖</a></li>
+					<li><a href='html/buyList.html'>精品网购</a></li>
+					<li><a href="#">化妆美容</a></li>
+					<li><a href="#">生活娱乐</a></li>
+					<li><a href="#">酒店旅游</a></li>
+				</ul>
+			</div>
+		</div>	
+		
+		<div id="contend">
+			
+			<div class="window">
+				<p>品牌特卖：</p>
+				<p class="p2"><span class="span1">精品网购:</span>
+					<span class="span2">
+						<a href="#">时尚女装</a>
+						<a href="#">流行男装</a>
+						<a href="#">情侣服饰</a>
+						<a href="#">时尚女装</a>
+						<a href="#">时尚女装</a>
+						<a href="#">流行男装</a>
+						<a href="#">情侣服饰</a>
+						<a href="#">时尚女装</a>
+						<a href="#">时尚女装</a>
+						<a href="#">流行男装</a>
+						<a href="#">情侣服饰</a>
+						<a href="#">时尚女装</a>
+						<a href="#">时尚女装</a>
+						<a href="#">流行男装</a>
+						<a href="#">情侣服饰</a>
+						<a href="#">时尚女装</a>
+					</span>				
+				</p>
+				<p class="p2"><span class="span1">生活服务：</span>
+					<span class="span2">
+						<a href="#">餐饮美食</a>
+						<a href="#">热门旅游</a>
+						<a href="#">面部保养</a>
+						<a href="#">时尚彩妆</a>
+						<a href="#">美甲美发</a>
+					</span>
+				</p>
+			</div>
+			
+			<div class="intros">
+				<div class="piture">
+					<div class="myfocus"></div>
+					<div class="nav1">
+						<ul></ul>
+					</div>
+				</div>
+				<div class="intro">
+					<p class='title'><a href="#">阿窝团官方网站</a></p>
+					<p class="intro1">
+						阿窝团阿窝团隶属于杭州浪尖网络科技有限公司，是一家拥有数年互联网运作经验公司，阿窝团是一家专业的精品团购平台，
+						致力于打造精品团购第一品牌，通过引入“团购”的概念，运用电子商务等网络技术，重点打造精品网络团购平台，通过每日主推精品消费的形式，
+						提供物美价廉的商讯。阿窝团网正是顺应时代发展的要求，结合中国电子商务的实际所搭建网络团购平台，为广大商家和业主提供最专业的团购服务。
+					</p>
+					
+				</div>
+		</div>
+			<p class="floors">
+				<span class="floor">1F 精品网购</span>
+				<span class="span3">
+					<a href="#">时尚女装</a>
+					<a href="#">流行男装</a>
+					<a href="#">情侣服饰</a>
+					<a href="#">时尚女装</a>
+					<a href="#">时尚女装</a>
+					<a href="#">流行男装</a>
+					<a href="#">情侣服饰</a>
+					<a href="#">时尚女装</a>
+					<a href="#">时尚女装</a>
+					<a href="#">流行男装</a>
+					<a href="#">情侣服饰</a>
+				</span>
+					<a href="#" class="more">全部精品网购>></a>
+			</p>
+			<div class="kefu">
+				<p class="kefu1"><img src='css/img/log-wei.png'/><a href="#">在线客服</a></p>
+				<ul>
+					<li>9:00~18:00</li>
+					<li class="QQ"><a href="#"><img src='css/img/login-qq.png'/>在线客服</a></li>
+					<li class="kuaidi"><a href="#">自助查询</a><br/><a href="#">快递信息</a></li>
+					<li class="noBottom"><a href="#" class="g1">BOOKMARK<br><a href="#" class="g2">收藏我们</a></a></li>
+				</ul>
+				<p class="topBack">回到顶部</p>
+			</div>
+			
+			<div class="floorList"></div>	
+			
+			<p class="floors">
+				<span class="floor">2F 化妆美容</span>
+				<span class="span3">
+					<a href="#">时尚女装</a>
+					<a href="#">流行男装</a>
+					<a href="#">情侣服饰</a>
+					<a href="#">时尚女装</a>
+					<a href="#">时尚女装</a>
+					<a href="#">流行男装</a>
+					<a href="#">情侣服饰</a>
+					<a href="#">时尚女装</a>
+					<a href="#">时尚女装</a>
+					<a href="#">流行男装</a>
+					<a href="#">情侣服饰</a>
+				</span>
+					<a href="#" class="more">全部化妆美容>></a>
+			</p>
+			
+			<p class="floors">
+				<span class="floor">4F 酒店旅游</span>
+				<span class="span3">
+					<a href="#">时尚女装</a>
+					<a href="#">流行男装</a>
+					<a href="#">情侣服饰</a>
+					<a href="#">时尚女装</a>
+					<a href="#">时尚女装</a>
+					<a href="#">流行男装</a>
+					<a href="#">情侣服饰</a>
+					<a href="#">时尚女装</a>
+					<a href="#">时尚女装</a>
+					<a href="#">流行男装</a>
+					<a href="#">情侣服饰</a>
+				</span>
+					<a href="#" class="more">全部酒店旅游>></a>
+			</p>
+			<div class="floorList4"></div>	
+		</div>
+		
+		<div id='buttom'>
+			<div id="bottomList">
+				<dl>
+					<dt><img src="css/img/bottom1.png" />用户帮助</dt>
+					<dd>
+						<ul>
+							<li><a href="#">玩转阿窝团</a></li>
+							<li><a href="#">常见问题</a></li>
+							<li><a href="#">服务保障计划</a></li>
+							<li><a href="#">意见与建议</a></li>
+						</ul>
+					</dd>
+				</dl>
+				
+				<dl>
+					<dt><img src="css/img/bottom2.png" />购物相关</dt>
+					<dd>
+						<ul>
+							<li><a href="#">玩转阿窝团</a></li>
+							<li><a href="#">常见问题</a></li>
+							<li><a href="#">服务保障计划</a></li>
+							<li><a href="#">意见与建议</a></li>
+						</ul>
+					</dd>
+				</dl>
+				
+				<dl>
+					<dt><img src="css/img/bottom3.png" />商务合作</dt>
+					<dd>
+						<ul>
+							<li><a href="#">玩转阿窝团</a></li>
+							<li><a href="#">常见问题</a></li>
+							<li><a href="#">服务保障计划</a></li>
+							<li><a href="#">意见与建议</a></li>
+						</ul>
+					</dd>
+				</dl>
+				
+				<dl>
+					<dt><img src="css/img/bottom4.png" />公司信息</dt>
+					<dd>
+						<ul>
+							<li><a href="#">玩转阿窝团</a></li>
+							<li><a href="#">常见问题</a></li>
+							<li><a href="#">服务保障计划</a></li>
+							<li><a href="#">意见与建议</a></li>
+						</ul>
+					</dd>
+				</dl>
+				
+				<dl class="noRight">
+					<dt><img src='css/img/bottom5.png' /><span class="tel">客服热线</span>(免长途费)</dt>
+					<dd>
+						<ul>
+							<li class="li1"><a href="#">400-6060-800</a></li>
+							<li class="li2"><a href="#">售前：<span class="img1"><img src="css/img/login-qq.png"/></span>售后：<span class="img1"><img src="css/img/login-qq.png"/></span></a></li>
+							<li><a href="#">（周一至周五）：9:00-18:00</a></li>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+		</div>
+			<div class='bottomNav'>
+				<ul class="navs">
+					<li><a href="#">关于阿窝团</a></li>
+					<li><a href="#">联系我们</a></li>
+					<li><a href="#">诚聘英才</a></li>
+					<li><a href="#">友情链接</a></li>
+					<li><a href="#">隐私条款</a></li>
+					<li class='noRight'><a href="#">网站地图</a></li>
+				</ul>
+			</div>
+			<div class='footer'>
+				<p>Copyright @ 2010-2012 awotuan.com All Rights Reserved 版权所有  工商注册号 ：126454566488 京1515655556565iin号  京68678Ivb号 京公网安备44646416号</p>
+				<ul>
+					<li class="web web1"><a href="#">网信认证<br/>Web Trust</a></li>
+					<li class="footer360"><a href="#"><img src='css/img/footer2.png'/></a></li>
+					<li class='web web2'><a href="#">支付宝<br/>特约商家</a></li>
+					<li class="footerYan"><a href="#"><img src="css/img/footer4.png"/></a></li>
+				</ul>
+			</div>
+			
+	</body>
+</html>

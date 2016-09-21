@@ -14,72 +14,32 @@
 			$(function(){
 				
 				var str = getCookie("arr");
-
 				// 用于存储所有的商品
 				var arr = [];
 				if (str != "")
 				{
 					// 说明之前 cookie 中有商品的内容
 					// 取出来转换成数组
-					arr = eval(str);
+					arr=eval(str);
 				}
-				// 商品由 名称 和 价格组成
-				// 例如：
-				// {product: XXX, price: 180}
-
-				//var allA = document.getElementsByTagName("a");
-
-				//for (var i = 0; i < allA.length; i++)
-				//{
-					var otex=document.getElementsByClassName('tex')[0];
+					var odetImg=document.getElementsByClassName('detImg')[0];
+					var otex=document.getElementsByClassName('tex11')[0];
 					var oPrice=document.getElementsByClassName('b1')[0];
-					$('#btnBuy').click (function(){
-					// 这个是价格
-					//var oPrice = ob1.innerHTML;
-
-					// 这个商品的信息
-					//var oProduct = oPrice.previousElementSibling;
-			
-			
-					// 取出商品名字的标签对象
-					//var oSpan = oProduct.getElementsByTagName("span")[0];
-		
-					// 取出标签对象中的名字，也就是商品的名称
-
-					// 函数库中自定义的函数
-					// 添加了一个 cookie,名字是 product, 内容是 商品的信息, 过期时间是 7天后
-					//alert(oSpan.innerHTML);
-					
-					// 转换成一个
-					// var str = encodeURI(oSpan.innerHTML);
-		
+					$('#btnBuy').click (function(){				
+				
 					var obj = {};
-		
-					//obj.product = oSpan.innerHTML;
+					obj.detImg=odetImg.innerHTML;
 					obj.tex=otex.innerHTML;
 					obj.price = oPrice.innerHTML;
 		
 					// 将创建好的商品添加到数组中
 					arr.push(obj);
 		
-					// 将数组的内容设置到 cookie 中呢？
+	
 					// cookie 的名字是 arr, 内容是数组中的商品，过期时间是7天以后
-					addCookie("arr", arr.toSource(), 7);
-
-
-
-					/*
-					addCookie("product", oSpan.innerHTML, 7);
-					
-					// 函数库中自定义的函数
-					// 添加了一个 cookie,名字是 price, 内容是 商品的价格, 过期时间是 7天后 
-					addCookie("price", oPrice.innerHTML, 7);
-					//*/
-					
-		
+					addCookie("arr", arr.toSource());		
 					alert("添加成功");
 				})
-			//}
 				
 				// 实现放大镜效果
 				$('.lxzoom').lxzoom({
@@ -145,11 +105,11 @@
 		<div id='contend'>
 			<div id="dets">
 				<div class="det">
-					<p class="tex">【独家首发+全国包邮】仅59元，尊享原价398元的2015爆款卡通时尚打底衫尊享原价398元的2015爆款卡通时尚打底衫尊享原价398元的2015爆款卡通时尚打底衫</p>
+					<p class="tex11">【独家首发+全国包邮】仅59元，尊享原价398元的2015爆款卡通时尚打底衫尊享原价398元的2015爆款卡通时尚打底衫尊享原价398元的2015爆款卡通时尚打底衫</p>
 					<div class="detImg  lxzoom"><img src='../css/img/detail.png'/><span></span></div>
 					<span class="detRight">
 						<p class='price'>
-							<b class='b1'>￥59.00</b>
+							<b class='b1'>RMB59.00</b>
 							<b>零售价：398.00元</b>
 							<i class='miaosha'><img src="../css/img/miaosha.png"/></i>
 							<i class='priceRight'><img src="../css/img/detRight.png"/></i>
@@ -165,7 +125,20 @@
 							距离团购时间还有：<br />
 							<span class="timer"><span></span>天<span></span>时<span></span>分<span></span>秒</span>
 						</p>
-					</span>					
+					</span>		
+					<div class="pingjia">
+						<p class="ping1"><span>本商品来自：</span><span class="ping1-r">商品评价：<img src="../css/img/star.png"/></span></p>
+						<p class="ping2">
+							<img src="../css/img/ping2.png"/><span class="ping2-r">该商家已提供团购保证金：<a>￥20000.00</a>元<br/>
+								如因卖家未履行消费者保障如因卖家未履行消费者保障如因卖家未履行消费者保障如因卖家未履行消费者保障如因卖家未履行消费者保障</span>
+							
+						</p>
+					</div>
+					<div class="tuihuo">
+						<p class="tui1">支持7天无理由退货</p>
+						省邮费小技巧：同一商家的产品累计重量不超过1KG只收一次运费哦！邮费修改的问题，咨询阿窝团的客服哦！
+					</div>
+					<div class="det-bottom"><img src="../css/img/dets11.png"/></div>
 				</div>
 				<div class="detMore">
 					<img src="../css/img/detail1.png" />

@@ -1,8 +1,8 @@
 body{background: #f6f6f6;}
 #contend{width:100%;position: relative;margin:0 auto;}
 #dets{width:1000px;margin:0 auto;margin-top:29px;}
-#dets .det{width:750px;height:630px;border:1px solid #e2dee2;float:left;}
-#dets .det .tex{margin:15px 0 0 17px;font-size: 22px;line-height: 30px;}
+#dets .det{width:750px;height:570px;border:1px solid #e2dee2;float:left;position: relative;}
+#dets .det .tex11{margin:15px 0 0 17px;font-size: 22px;line-height: 30px;}
 #dets .det .detImg{display:inline-block;border:2px solid #e29257;width:438px;height:280px;margin-left: 7px;float:left}
 #dets .det .detRight{display: inline-block;border-bottom: 1px solid #e2dee2;width:300px;height:282px;float: left;}
 #dets .det .detRight .price{width:285px;height:60px;background:#da3b22;border-radius:0 26px 0 0 ;color:white;position: relative;}
@@ -17,6 +17,16 @@ body{background: #f6f6f6;}
 #dets .time .timer{display:block;height:30px;line-height: 30px;clear: both;}
 #dets .time .timer span{display:inline-block;width:40px;height: 30px;background: #262626;position: relative;top:8px;}
 #dets .detMore{width: 232px;height: 540px;float: left;margin-left: 10px;}
+#dets .pingjia{margin-left:8px;width:435px;height:120px;border:1px solid #ACACAC;clear: both;float:left;margin-top: 12px;}
+#dets .pingjia .ping1{display: inline-block;width:406px;height:30px;margin-left:12px;line-height:30px;border-bottom: 1px solid #898888;}
+#dets .ping1 .ping1-r{float:right;}
+#dets .ping2{height:80px;clear: both;}
+#dets .ping2 img{float:left ;width:76px;height:74px;}
+#dets .ping2 .ping2-r{float: left;width:320px;height:76px;}
+
+#dets .tuihuo{width:290px;height:120px;border:1px solid #ACACAC;float:left;margin-left:10px;margin-top: 12px;}
+#dets .det-bottom{position: absolute;bottom:0;left:0;}
+
 /*kefu*/
 .kefu{position:absolute;top:-16px;right:0;background:#fff;border:1px solid #f1b6c6;width:100px;height:205px;border-top:#e29257 2px solid;}
 .kefu .kefu1{height:30px;border-bottom:solid 1px #f1b6c6;line-height:30px;}

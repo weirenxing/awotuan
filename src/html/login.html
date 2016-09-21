@@ -16,32 +16,29 @@
 				$('#password').focus(function () { 
 					$('#password').val(''); 
 				}) 
-				var s=0;
-				$('#username').on('blur',function () { 
-					
+				var s;
+				$('#username').on('blur',function () { 					
 					var str=this.value;
-					var reg = /^[a-zA-Z]\w{5,19}$/|/\w+@[a-zA-Z0-9]+\.[a-zA-Z]+/|/^1[35678]\d{9}$/;
-					var test=reg.test(str);
-					if (!test)
+					var reg = (/(^1[0-9]{10}$)|(^[a-zA-Z]\w{5,19}$)|(^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$)/);
+					s=reg.test(str);
+					if (s==false)
 					{ 
 						$('#username').val('请输入用户名、邮箱或手机登录').css('color','red'); 
-						s=0;
 					} 
-					s=1;
 				}) 
-				var s1=0;
+				var s1;
 				$('#password').on('blur',function () { 
 					var str=this.value;
 					var reg=/^.{6,20}$/;
-					var test1=reg.test(str);
-					if(!test1){						
+					s1=reg.test(str);
+					if(s1==false){						
 						$('.ospan').html('密码不合法').css('color','red');
-						s1=0;
 					}
-					s1=1;
 				}) 
-				$('#btn').click(function () { 
-					if (s===1 && s1===1) 
+				$('#btn').click(function () {
+					console.log(s);
+					console.log(s1);
+					if (s && s1) 
 					{ alert('登陆成功！'); } 
 					else { alert('登陆失败！'); } 
 				}) 

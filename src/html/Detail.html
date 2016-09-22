@@ -9,45 +9,60 @@
 		<link href="../css/jquery.bigerzoom.css" rel="stylesheet"/>
 		<script src="../assets/jquery-1.12.0.js"></script>
 		<script src='../js/mycookie.js'></script>
-		<script src="../js/jquery.bigerzoom.js"></script>
-		<script>
-			$(function(){
+		<script src='../js/jquery.elevateZoom.js'></script>
+		<script>				
+			var SysSecond;
+		    var InterValObj;
+		    $(document).ready(function() {
+		    	SysSecond = 180000;
+		    	InterValObj = window.setInterval(SetRemainTime, 1000);
+		    	
+		    	//鼠标滑过select热门城市时出现弹窗
+				$('#over').on('mouseover',function(){
+					$('.city').show();
+				})
+				//点击关闭按钮隐藏弹窗
+				$('.city').on('click','.btnClose',function(){
+					$('.city').hide();
+				})
 				
-				var str = getCookie("arr");
+				//加入购物车
+				var str = getCookie("arr");			
 				// 用于存储所有的商品
 				var arr = [];
-				if (str != "")
-				{
-					// 说明之前 cookie 中有商品的内容
-					// 取出来转换成数组
-					arr=eval(str);
-				}
-					var odetImg=document.getElementsByClassName('detImg')[0];
-					var otex=document.getElementsByClassName('tex11')[0];
-					var oPrice=document.getElementsByClassName('b1')[0];
-					$('#btnBuy').click (function(){				
+				console.log(arr);
+				//加入购物车按钮
+				$('#btnBuy').click (function(){								
+				var obj = {};
+				obj.detImg=$('#zoom_01').attr('src');
+				obj.tex=$('.tex11').html();
+				obj.price = $('.b1').html();					
+				// 将创建好的商品添加到数组中
+				arr.push(obj);
+				addCookie("arr", JSON.stringify(arr));		
+				alert("添加成功");
 				
-					var obj = {};
-					obj.detImg=odetImg.innerHTML;
-					obj.tex=otex.innerHTML;
-					obj.price = oPrice.innerHTML;
-		
-					// 将创建好的商品添加到数组中
-					arr.push(obj);
-		
-	
-					// cookie 的名字是 arr, 内容是数组中的商品，过期时间是7天以后
-					addCookie("arr", arr.toSource());		
-					alert("添加成功");
 				})
 				
-				// 实现放大镜效果
-				$('.lxzoom').lxzoom({
-					gap:10,
-					width:200,
-					height:200
-				})
-			})
+				// 实现放大镜效果				
+				$('#zoom_01').elevateZoom({});
+
+		    });
+		    function SetRemainTime() {
+		      	if (SysSecond > 0) {
+		      		SysSecond = SysSecond - 1;
+		      		var second = Math.floor(SysSecond % 60); 
+		      		var minite = Math.floor((SysSecond / 60) % 60);
+		      		var hour = Math.floor((SysSecond / 3600) % 24); 
+		      		var day = Math.floor((SysSecond / 3600) / 24);
+		      		$("#day").html(day).css({'color':'white','position':'relative','top':0,'font-weight':'bold',});
+		      		$('#minues').html(minite).css({'color':'white','position':'relative','top':0});
+		      		$('#hour').html(hour).css({'color':'white','position':'relative','top':0});
+		      		$('#second').html(second).css({'color':'white','position':'relative','top':0});
+		       	} else {
+		       		window.clearInterval(InterValObj);
+		       	}
+		    }
 		</script>
 	</head>
 	<body>
@@ -70,7 +85,27 @@
 		<div id="headers">
 			<div id="header" >
 				<span><img src='../img/logo.png'></span>
-				<select><option>北京</option></select>
+				<select id="over"><option>北京</option></select>
+				<div class="city">
+					<p class="title">城市列表<button class="btnClose">关闭&times;</button></p>
+					<p class="citys">
+						<span class='p1'>热门</span><span class="cityList"><a href="#">北京</a><a href="#">北京</a><a href="#">北京</a>
+							<a href="#">北京</a><a href="#">上海</a><a href="#">湛江</a><a href="#">武汉</a>
+							<a href="#">天津</a><a href="#">南宁</a><a href="#">杭州</a><a href="#">南宁</a>
+							<a href="#">广州</a><a href="#">玉林</a><a href="#">沈阳</a><a href="#">天津</a>
+							<a href="#">东莞</a><a href="#">西安</a><a href="#">北京</a><a href="#">深圳</a>
+							<a href="#">厦门</a><a href="#">西宁</a><a href="#">合肥</a><a href="#">珠海</a>
+							<a href="#">深圳</a><a href="#">海口</a><a href="#">成都</a><a href="#">北京</a>
+							<a href="#">武汉</a><a href="#">桂林</a><a href="#">北京</a></span>
+						<span class="p2">拼音</span><span class="letter"><a href="#">a</a><a href="#">b</a><a href="#">c</a>
+							<a href="#">d</a><a href="#">e</a><a href="#">f</a><a href="#">g</a>
+							<a href="#">h</a><a href="#">i</a><a href="#">j</a><a href="#">k</a>
+							<a href="#">l</a><a href="#">m</a><a href="#">n</a><a href="#">p</a>
+							<a href="#">q</a><a href="#">r</a><a href="#">s</a><a href="#">t</a>
+							<a href="#">a</a><a href="#">r</a><a href="#">g</a><a href="#">v</a>
+							<a href="#">w</a><a href="#">x</a></span>
+					</p>
+				</div>
 				<dl>
 					<dt><img src="../img/nav1.png"></dt>
 					<dd><a href="#">品质保证</a></dd>
@@ -86,6 +121,7 @@
 				<div id="search">
 					<input type="text" placeholder="请输入您要查找的关键字" class='tex' />
 					<span class='seaBtn'>搜索</span>
+					<span class="search-tex"><a>连衣裙</a><a>内裤</a><a>拉杆箱</a><a>瘦身</a><a>瑞士军刀包</a></span>
 				</div>
 			</div>
 		</div>
@@ -106,10 +142,10 @@
 			<div id="dets">
 				<div class="det">
 					<p class="tex11">【独家首发+全国包邮】仅59元，尊享原价398元的2015爆款卡通时尚打底衫尊享原价398元的2015爆款卡通时尚打底衫尊享原价398元的2015爆款卡通时尚打底衫</p>
-					<div class="detImg  lxzoom"><img src='../css/img/detail.png'/><span></span></div>
+					<div class="detImg"><img id="zoom_01" src="../css/img/detail.png" data-zoom-image="../img/index1-big.png"/></div>
 					<span class="detRight">
 						<p class='price'>
-							<b class='b1'>RMB59.00</b>
+							<b class='b1'>59.00</b>
 							<b>零售价：398.00元</b>
 							<i class='miaosha'><img src="../css/img/miaosha.png"/></i>
 							<i class='priceRight'><img src="../css/img/detRight.png"/></i>
@@ -122,8 +158,8 @@
 							已购买人数：2756
 						</p>
 						<p class="time">
-							距离团购时间还有：<br />
-							<span class="timer"><span></span>天<span></span>时<span></span>分<span></span>秒</span>
+							距离团购结束时间还有：<br />
+							<span class="timer"><span id="day"></span>天<span id='hour'></span>时<span id='minues'></span>分<span id='second'></span>秒</span>
 						</p>
 					</span>		
 					<div class="pingjia">
@@ -141,9 +177,97 @@
 					<div class="det-bottom"><img src="../css/img/dets11.png"/></div>
 				</div>
 				<div class="detMore">
-					<img src="../css/img/detail1.png" />
+					<div class="detMore1">
+						<p class="more1"><span class="more-l">同类热销</span><span class="more-r">more~</span></p>
+						<dl>
+							<dt>骄阳家纺全棉拼色四件套</dt>
+							<dd>
+								<img src="../css/img/det-more.png"/>
+								<ul>
+									<li class="more-red">￥99.00</li>
+									<li class="more-gray">原价1899</li>
+									<li>16357人购买</li>
+									<li><img src="../css/img/more2.png" class="more-img"/></li>
+								</ul>
+							</dd>
+						</dl>
+					</div>
+					<div class="detMore1">
+						<p class="more1"><span class="more-l">同类热销</span><span class="more-r">more~</span></p>
+						<dl>
+							<dt>骄阳家纺全棉拼色四件套</dt>
+							<dd>
+								<img src="../css/img/det-more.png"/>
+								<ul>
+									<li class="more-red">￥99.00</li>
+									<li>原价1899</li>
+									<li>16357人购买</li>
+									<li><img src="../css/img/more2.png"  class="more-img"  /></li>
+								</ul>
+							</dd>
+						</dl>
+					</div>
+					<div class="detMore1">
+						<p class="more1"><span class="more-l">同类热销</span><span class="more-r">more~</span></p>
+						<dl>
+							<dt>骄阳家纺全棉拼色四件套</dt>
+							<dd>
+								<img src="../css/img/det-more.png"/>
+								<ul>
+									<li class="more-red">￥99.00</li>
+									<li>原价1899</li>
+									<li>16357人购买</li>
+									<li><img src="../css/img/more2.png" class="more-img"/></li>
+								</ul>
+							</dd>
+						</dl>
+					</div>
+					<div class="detMore1">
+						<p class="more1"><span class="more-l">同类热销</span><span class="more-r">more~</span></p>
+						<dl>
+							<dt>骄阳家纺全棉拼色四件套</dt>
+							<dd>
+								<img src="../css/img/det-more.png"/>
+								<ul>
+									<li class="more-red">￥99.00</li>
+									<li>原价1899</li>
+									<li>16357人购买</li>
+									<li><img src="../css/img/more2.png" class="more-img"/></li>
+								</ul>
+							</dd>
+						</dl>
+					</div>
+					
+					
+				</div>
+				<div class="good-det">
+					<div class="good-det1">
+						<ul class="nav">
+							<li><a href="#">商品详情</a></li>
+							<li><a href="#">用户点评（0）</a></li>
+							<li><a href="#">配送说明</a></li>
+							<li><a href="#">如何购买</a></li>
+						</ul>
+						<span class="buyer">已有<a>2756</a>人购买<img src="../css/img/detail1-1.png" class="buyers"/></span>
+						
+					</div>
+					<dl>
+						<dt>产品基本参数</dt>
+						<dd>
+							<ul>
+								<li>产品名称：卡通刺绣时尚打底衫</li>
+								<li>产品颜色：黑色 白色</li>
+								<li>产品尺码：S M L XL XXL XXXL</li>
+								<li>产品材质：棉+涤纶</li>
+								<li>年份季节：2015秋季</li>
+							</ul>
+						</dd>
+					</dl>				
 				</div>
 			</div>
+			
+			
+			
 			<div class="kefu">
 				<p class="kefu1"><img src="../css/img/log-wei.png"/><a href="#">在线客服</a></p>
 				<ul>

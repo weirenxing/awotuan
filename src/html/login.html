@@ -9,60 +9,43 @@
 		<script src="../js/mycookie.js"></script>
 		<script src="../assets/jquery-1.12.0.js"></script>
 		<script type="text/javascript"> 
-			$(function(){
-				$('#username').focus(function () { 
-					$('#username').val(''); 
-				}) 
-				$('#password').focus(function () { 
-					$('#password').val(''); 
-				}) 
-				var s;
-				$('#username').on('blur',function () { 					
-					var str=this.value;
-					var reg = (/(^1[0-9]{10}$)|(^[a-zA-Z]\w{5,19}$)|(^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$)/);
-					s=reg.test(str);
-					if (s==false)
-					{ 
-						$('#username').val('请输入用户名、邮箱或手机登录').css('color','red'); 
-					} 
-				}) 
-				var s1;
-				$('#password').on('blur',function () { 
-					var str=this.value;
-					var reg=/^.{6,20}$/;
-					s1=reg.test(str);
-					if(s1==false){						
-						$('.ospan').html('密码不合法').css('color','red');
-					}
-				}) 
-				$('#btn').click(function () {
-					console.log(s);
-					console.log(s1);
-					if (s && s1) 
-					{ alert('登陆成功！'); } 
-					else { alert('登陆失败！'); } 
-				}) 
-				
+			$(function(){				
 				// 登录按钮
-				var btnLogin = document.getElementById("btn");
-				var oCheck = document.getElementById("savePwd");
+				var btnLogin = document.getElementById("btn");				
+				var oCheck = document.getElementById("check");
 				var oUsername = document.getElementById("username");
 				var oPassword = document.getElementById("password");
-				// 获取当前页面中的 cookie
-				var username = getCookie("username");			
-				if (username)
-				{
-					oUsername.value = username;			
-				}
-	
-	
-				 btnLogin.onclick = function() {
+				// 调用自己的函数，来获取页面中的 cookie
+				var username1 = getCookie("username1");
+				var passw = getCookie("password");
+				var username=getCookie("username");
+				console.log(username1);
+				console.log(username);
+				console.log(passw);
+				
+				btnLogin.onclick = function() {
+					// oCheck.checked 为 true，那么就勾选了，否则就没勾选
 					if (oCheck.checked)
-						{
-							var strUsername = oUsername.value;
-							addCookie("username", strUsername);
-						}
+					{
+						var strUsername = oUsername.value;
+						var strPassword = oPassword.value;
+						// 调用自己写的函数，实现添加 cookie
+						addCookie("name", strUsername, 7);
+						addCookie("pass", strPassword, 7);
 					}
+					
+					var aa=oUsername.value;
+					console.log(aa);
+					var bb=oPassword.value;
+					console.log(bb);
+					//判断输入的值是否为页面保存了的东西
+					if ((aa==username1||aa==username)&&bb ==passw)
+					{
+						alert("登录成功！");
+					}else{
+						alert("用户名不存在或者密码不正确");
+					}
+				}
 				})
 				
 		</script> 
@@ -82,13 +65,14 @@
 		        <p>
 		            <label for="username" class='label1'>邮箱/手机</label>
 		            <input type="text" id="username" placeholder="请输入用户名、邮箱或手机登录">
+		            <span class="ospan0"></span>
 		        </p>
 		        <p>
 		            <label for="password" class='label2'>密码</label>
 		            <input type="password" id="password"><span class="ospan"></span>
 		        </p>
 		        <p class="log">		         
-                   <label><input type="checkbox" value="记住登录名" id='savePwd'>记住登录名</label>		           
+                   <label><input type="checkbox" value="记住登录名" id='check'>记住登录名</label>		           
 		        </p>
 		        <p class="log">
 		            <input type='submit' value="登录" id="btn">

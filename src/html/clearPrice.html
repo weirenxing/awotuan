@@ -7,18 +7,93 @@
 		<link href='../css/common.css' rel="stylesheet"/>
 		<link href="../css/clearPrice.css" rel="stylesheet"/>
 		<script src="../js/mycookie.js"></script>
+		<script src="../assets/jquery-1.12.0.js"></script>
 		<script>
-			var str ='[{detImg:"<img src=\"../css/img/detail.png\"><span></span>", tex:"\u3010\u72EC\u5BB6\u9996\u53D1+\u5168\u56FD\u5305\u90AE\u3011\u4EC559\u5143\uFF0C\u5C0A\u4EAB\u539F\u4EF7398\u5143\u76842015\u7206\u6B3E\u5361\u901A\u65F6\u5C1A\u6253\u5E95\u886B\u5C0A\u4EAB\u539F\u4EF7398\u5143\u76842015\u7206\u6B3E\u5361\u901A\u65F6\u5C1A\u6253\u5E95\u886B\u5C0A\u4EAB\u539F\u4EF7398\u5143\u76842015\u7206\u6B3E\u5361\u901A\u65F6\u5C1A\u6253\u5E95\u886B", price:"RMB59.00"}]';
-			onload = function() {		
+			
+			
+			 $(function(){
+
+	        	//鼠标滑过select热门城市时出现弹窗
+				$('#over').on('mouseover',function(){
+					$('.city').show();
+				})
+				//点击关闭按钮隐藏弹窗
+				$('.city').on('click','.btnClose',function(){
+					$('.city').hide();
+				})
+	        	
+	         	//客服小窗口随滚动条移动，
+				$(window).scroll(function() {		
+					var top = $(window).scrollTop();			
+						$(".kefu").css({ top: top + "px" });			
+				});
+				//回到顶部
+				$(".topBack").click(function(){
+					$('.kefu').animate({top:0},1000);
+					$('body,html').animate({'scrollTop':0},1000);
+				})    
+
+				//添加到购物车
 				var str = getCookie("arr");			
-				var arr = eval(str);
-				var obuys=document.getElementsByClassName("buyss")[0];
-				var oPrice=document.getElementsByClassName("oprice")[0];
-				var addTex=document.getElementsByClassName("tex111")[0];
-				obuys.innerHTML=arr[0].detImg;
-				oPrice.innerHTML =arr[0].price;
-				addTex.innerHTML=arr[0].tex;			
-			}
+				var arr=JSON.parse(str);
+				console.log(arr)
+				var $table=$("#cart");
+				for (var i=0;i<arr.length;i++) {
+					sumUp();
+					var $tbody=$('<tbody>');
+					$tr2=$('<tr class="fff" id="two">');
+					$tr3=$('<tr class="fff" class="three">');
+					$tr4=$('<tr class="four"></tr>');
+					$('<td>').addClass('tab1').html("<input type='checkbox'/>"+'<span class="buyss">'+'<img src="'
+					+arr[i].detImg+'" width="90" height="57"/>'+'</span>'+'<span class="tab1-tex">'
+					+arr[i].tex+'</span>').appendTo($tr2);
+					$('<td>').html("闫森：黑色    尺码：L").appendTo($tr2);
+					$('<td class="price-o">').html(arr[i].price).appendTo($tr2);
+					$('<td class="yellow">').html('<p class="pCenter">'+'<span class="tab-old">'+"-"+'</span>'+'<input type="text" class="tab-tex" value="1"/>'+'<span class="tab-add">'+"+"+'</span>'+'</p>').appendTo($tr2);
+					$('<td class="sumPrice">').appendTo($tr2);
+					$('<td class="del">').html("删除").appendTo($tr2);
+					$("<td colspan='6'>").html('<label class="check1">'+'<input type="checkbox" value="全选" />'+"全选"+'</label>'+"<p class='pRight'>"+'数量：'+'<span>'+"1"+'</span>'+"件  金额：￥"+'<span>'+arr[i].price+'</span>'+ "邮费：￥"+'<span>'+'0'+'</span>'+'</p>').appendTo($tr3);
+					$('<td colspan="6" class="tRight"></td>').html("总额："+"<span>"+arr[i].price+"</span>").appendTo($tr4);
+					$tr2.appendTo($tbody);
+					$tr3.appendTo($tbody);
+					$tr4.appendTo($tbody);
+					$tbody.appendTo($table);
+					
+				}
+				$('.del').on('click',function(){
+					//删除DOM节点
+					$(this).parents('tbody').remove();
+				});
+				var i=$('.tab-tex').val();
+				console.log(i);
+				$('.tab-add').on('click',function(){
+					$('.tab-tex').val(i++);					
+				});
+				$('.tab-old').on('click',function(){					
+					$('.tab-tex').val(i--);
+					if(i==0){
+						$('.tab-tex').val("0");
+					}
+				});
+				/*var sum=$(".price-o").html()*$('.tab-tex').val();
+				$(".sumPrice").html(sum);
+				console.log(sum);
+				console.log($('.tab-tex').val());*/
+				function sumUp(){
+					//汇总支付金额与商品数量
+					var sum=0;
+					var allnum=0;
+					$('#cart tbody').each(function(){
+						var price=$(".price-o").html();
+						var num=$('.tab-tex').val();
+						sum+=price*num;
+						$(".sumPrice").html(sum);
+						allnum+=parseInt(num);
+						$('.tab-tex').val(allnum);
+					});
+				}
+				
+			})
 		</script>
 	</head>
 	<body>
@@ -41,7 +116,27 @@
 		<div id="headers">
 			<div id="header" >
 				<span><img src='../img/logo.png'></span>
-				<select><option>北京</option></select>
+				<select id="over"><option>北京</option></select>
+				<div class="city">
+					<p class="title">城市列表<button class="btnClose">关闭&times;</button></p>
+					<p class="citys">
+						<span class='p1'>热门</span><span class="cityList"><a href="#">北京</a><a href="#">北京</a><a href="#">北京</a>
+							<a href="#">北京</a><a href="#">上海</a><a href="#">湛江</a><a href="#">武汉</a>
+							<a href="#">天津</a><a href="#">南宁</a><a href="#">杭州</a><a href="#">南宁</a>
+							<a href="#">广州</a><a href="#">玉林</a><a href="#">沈阳</a><a href="#">天津</a>
+							<a href="#">东莞</a><a href="#">西安</a><a href="#">北京</a><a href="#">深圳</a>
+							<a href="#">厦门</a><a href="#">西宁</a><a href="#">合肥</a><a href="#">珠海</a>
+							<a href="#">深圳</a><a href="#">海口</a><a href="#">成都</a><a href="#">北京</a>
+							<a href="#">武汉</a><a href="#">桂林</a><a href="#">北京</a></span>
+						<span class="p2">拼音</span><span class="letter"><a href="#">a</a><a href="#">b</a><a href="#">c</a>
+							<a href="#">d</a><a href="#">e</a><a href="#">f</a><a href="#">g</a>
+							<a href="#">h</a><a href="#">i</a><a href="#">j</a><a href="#">k</a>
+							<a href="#">l</a><a href="#">m</a><a href="#">n</a><a href="#">p</a>
+							<a href="#">q</a><a href="#">r</a><a href="#">s</a><a href="#">t</a>
+							<a href="#">a</a><a href="#">r</a><a href="#">g</a><a href="#">v</a>
+							<a href="#">w</a><a href="#">x</a></span>
+					</p>
+				</div>
 				<dl>
 					<dt><img src="../img/nav1.png"></dt>
 					<dd><a href="#">品质保证</a></dd>
@@ -57,6 +152,7 @@
 				<div id="search">
 					<input type="text" placeholder="请输入您要查找的关键字" class='tex' />
 					<span class='seaBtn'>搜索</span>
+					<span class="search-tex"><a>连衣裙</a><a>内裤</a><a>拉杆箱</a><a>瘦身</a><a>瑞士军刀包</a></span>
 				</div>
 			</div>
 		</div>
@@ -91,7 +187,7 @@
 						<td>操作</td>
 					</tr>
 					<tr class="fff">
-						<td><input type="checkbox"/><span class="buyss"><img src="../css/img/clear.png"/></span><span class="tex111"></span></td>
+						<td class="tab1"><input type="checkbox"/><span class="buyss"><img src="../css/img/clear.png"/></span><span class="tab1-tex">【独家首发+全国包邮】仅59元，尊享原价398元的2015爆款卡通时尚打底衫尊享原价398元的2015爆款卡通时尚打底衫尊享原价398元的2015爆款卡通时尚打底衫</span></td>
 						<td>闫森：黑色    尺码：L</td>
 						<td  class="oprice"></td>
 						<td class="yellow"><p class="pCenter"><span>-</span><input type="text"/><span>+</span></p></td>
@@ -104,6 +200,18 @@
 					<tr>
 						<td colspan="6" class="tRight">总额：￥<span>59.00</span></td>
 					</tr>
+				</table>
+				
+				<table border="1"width="1000" height="180" id="cart">
+					<tr>
+						<td colspan="2">商品</td>
+						<td>单价（元）</td>
+						<td>数量（件）</td>
+						<td>金额（元）</td>
+						<td>操作</td>
+					</tr>
+					
+					
 				</table>
 			</div>
 			<div class="kefu">

@@ -1,6 +1,6 @@
-body{background: #f6f6f6;}
-#contend{width:100%;position: relative;margin:0 auto;}
-#dets{width:1000px;margin:0 auto;margin-top:29px;}
+body{background: #f6f6f6;height:100%;}
+#contend{width:100%;position: relative;margin:0 auto;height: auto;}
+#dets{width:1000px;margin:0 auto;margin-top:29px;height: auto;}
 #dets .det{width:750px;height:570px;border:1px solid #e2dee2;float:left;position: relative;}
 #dets .det .tex11{margin:15px 0 0 17px;font-size: 22px;line-height: 30px;}
 #dets .det .detImg{display:inline-block;border:2px solid #e29257;width:438px;height:280px;margin-left: 7px;float:left}
@@ -13,10 +13,10 @@ body{background: #f6f6f6;}
 #dets .buy button{width:137px;height: 40px;background: #fc0154;border-radius: 6px;}
 #dets .buy input{width: 90px;height: 40px;background: #fafafa;border-radius: 6px;}
 #dets .people{line-height: 90px;text-align: center;}
-#dets .time{line-height: 30px;text-align: center;}
-#dets .time .timer{display:block;height:30px;line-height: 30px;clear: both;}
-#dets .time .timer span{display:inline-block;width:40px;height: 30px;background: #262626;position: relative;top:8px;}
-#dets .detMore{width: 232px;height: 540px;float: left;margin-left: 10px;}
+#dets .time{line-height: 30px;text-align: center;color:#7e7e7e;}
+#dets .time .timer{display:block;height:40px;line-height:30px;clear: both;font-size: 16px;}
+#dets .time .timer span{display:inline-block;width:40px;height: 30px;margin:5px;border-radius:5px;font-size:25px;background: url(img/bg.png) repeat-x;position: relative;top:8px;line-height: 30px;}
+
 #dets .pingjia{margin-left:8px;width:435px;height:120px;border:1px solid #ACACAC;clear: both;float:left;margin-top: 12px;}
 #dets .pingjia .ping1{display: inline-block;width:406px;height:30px;margin-left:12px;line-height:30px;border-bottom: 1px solid #898888;}
 #dets .ping1 .ping1-r{float:right;}
@@ -26,6 +26,33 @@ body{background: #f6f6f6;}
 
 #dets .tuihuo{width:290px;height:120px;border:1px solid #ACACAC;float:left;margin-left:10px;margin-top: 12px;}
 #dets .det-bottom{position: absolute;bottom:0;left:0;}
+
+/*detMore*/
+#dets .detMore{width: 232px;height: auto;border:1px solid #f1b6c6;float: left;margin-left: 10px;}
+#dets .detMore1{clear:both;margin-left:15px;width:205px;height:85px;}
+#dets .detMore1 .more1{position:relative;height:30px;line-height: 30PX;color:#666;}
+#dets .detMore1 .more-l{margin-left:10px;}
+#dets .detMore1 .more-r{position: absolute;right:15px;}
+#dets .detMore1 dt{color:#262626;font-weight: bolder;margin-top:15px;background: #fff;}
+#dets .detMore1 dd{margin-top:15px;background: #fff;line-height: 19px;text-indent: 8px;}
+#dets .detMore1 dd img,#dets .detMore1 dd ul{float:left;}
+#dets .detMore1 dd .more-red{color:#dc442f;font-size:19px;}
+#dets .detMore1 dd .more-gray{color:#999;}
+#dets .detMore1 dd .more-img{margin-left: 8px;}
+
+/*good-det*/
+.good-det{width:750px;height:auto;clear: both;padding-top: 12px;border:1px solid #e4e4e4;}
+.good-det .good-det1{width: 752px;height:38px;background:#eeeeee;margin-bottom:18px;line-height:38px;position: relative;}
+.good-det .good-det1 .nav{width:346px;height:38px;}
+.good-det .good-det1 .nav li{float:left;width:82px;line-height: 38px;}
+.good-det .good-det1 .nav li a{display:inline-block;width:82px;text-align:center;color:#000;background:#e4e4e4;}
+.good-det .good-det1 .nav li a:hover{background:#fff;}
+.good-det1 .nav,.good-det1 .buyer{float: left;}
+.good-det1 .buyers{position: absolute;right:10px;top:9px;}
+.good-det dl{width:727px;height: 203px;border:1px solid #d0c99f;margin:0 auto;}
+.good-det dl dt{height:40px;line-height: 40px;margin-bottom:20px;background: #fff9c9;font-weight: bolder;text-indent: 10px;}
+.good-det dl ul{width:695px;height:160px;margin: 0 auto;color:#333;}
+.good-det dl ul li{height:23px;line-height: 23px;border-bottom: 1px dashed #ccc;}
 
 /*kefu*/
 .kefu{position:absolute;top:-16px;right:0;background:#fff;border:1px solid #f1b6c6;width:100px;height:205px;border-top:#e29257 2px solid;}

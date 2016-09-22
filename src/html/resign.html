@@ -12,6 +12,7 @@
 		<script src='../assets/jquery-1.12.0.js'></script>
 		<script src="../assets/jquery.validate.js"></script>
 		<script src='../assets/jquery.validate.messages_zh.js'></script>
+		<script src="../js/mycookie.js"></script>
 		<script type="text/javascript">
 			$(function(){
 				// 表单验证插件
@@ -36,6 +37,43 @@
 						error:$('.msgRed1 error')
 					}
 				});
+				
+				//保存cooki
+				//提交按钮
+				var $btn=$('#btn');
+				//用户名
+				var $username=$('#username');
+				//邮箱
+				var $username1=$('#username1');
+				//密码
+				var $password=$('#password');
+			
+				//给点击立即注册一个事件，提交后保存cookie
+				var oCheck=document.getElementById("check")
+				$btn.on('click',function(){
+					if (oCheck.checked)
+					{
+						//取出注册的用户名和密码
+						var strUsername=$username.val();
+						var strUsername1=$username1.val();
+						console.log(strUsername);
+						console.log(strUsername1)
+						var strPassword=$password.val();
+						
+						//保存到cookie中
+						var oDate=new Date();
+						
+						//设置保存的天数
+						oDate.setDate(oDate.getDate() + 7);
+						document.cookie = "username="+strUsername+";expires=" + oDate;
+						document.cookie = "username1="+strUsername1+";expires=" + oDate;
+						document.cookie = "password="+strPassword+";expires=" + oDate;
+						
+						
+					}
+					alert("注册成功")
+				})
+				
 			});
 		</script>
 	</head>
@@ -49,10 +87,10 @@
 			<div class='resign'>
 			<p class="log1"><a href="#">会员注册</a><b>欢迎您加入阿窝团，注册只需15秒，超值优惠，每天享受！</b></p>
 			<p class='border-w'></p>
-			<form id="form1" action='login.html'>
+			<form id="form1">
 				<p>
 		            <label for="username" class='label1'>邮箱</label>
-		            <input type="text" name="email" class='username' placeholder="请输入邮箱">
+		            <input type="text" name="email" class='username' id="username1">
 		        </p>
 		        <p>
 		            <label for="username" class='label2'>用户名</label>

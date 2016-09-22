@@ -24,6 +24,8 @@
 #header #search{width:350px;height:50px;background:white;position: absolute;right:0px;top:30px;border:1px solid #555555;border-radius: 10px;}
 #header #search .tex{width:250px;height:46px;position: absolute;left:30px ;border: none;font-size: 15px;}
 #header #search .seaBtn{width:80px;height:50px;background:#ef0005;position: absolute;right:0;border-radius:0 10px 10px 0 ;text-align: center;line-height: 50px;color:#fbefef;font-size: 25px;}
+#header #search .search-tex{position: absolute;bottom:-18px;}
+#header #search .search-tex a{display: inline-block;color:#fe9501;margin-right: 12px;}
 
 /*nav*/
 #navs{width:100%;height:40px;background:#262626;clear: both;}
@@ -32,6 +34,18 @@
 #nav li a{color:white;padding:13px 20px;}
 #nav li a:active{color:black;background:white;}
 
+/*city*/
+.city{z-index:100;display:none;width:490px;height:220px;border:1px solid #CCC;position: absolute;left:20%;top:85px;border-radius:8px;background: #fbfbfb;}
+.city .title{height:34px;width:470px;margin: 0 auto;line-height: 34px;}
+.city .btnClose{float: right;margin-top:8px;}
+.city .citys{width:470px;height:165px;border:1px solid #e8e8e8;margin: 0 auto;background: #fff;position: relative;}
+.city .cityList{width:420px;margin-left:50px;height:100px;display: inline-block;line-height: 23px;margin-top: 10px;}
+.city .cityList a{width:50px;display: inline-block;color:#000;color: #000;}
+.city .p1{position: absolute;left:10px;top:15px;color:#333;}
+.city .p2{clear: both;position: absolute;left:10px;bottom:35px;color:#333;}
+.city .letter{display:inline-block;width:405px;height:23px;margin-left:50px;line-height:23px;border-bottom: 1px solid #d9d9d9;}
+.city .letter a{display: inline-block;width:13px;height:23px;color:#555555;}
+.city .letter a:hover{display: inline-block;width:13px;height:23px;color:#c12323;border:1px solid #dbdbdb;text-align:center;}
 /*bottomList*/
 #buttom{width:100%;height:175px;border-top:2px solid #e5e5e5;clear:both;background:#f7f7f7;margin-top:70px;}
 #bottomList{width:1000px;height:175px;clear: both;margin: 0 auto;padding:18px 50px;}

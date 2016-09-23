@@ -39,7 +39,7 @@
 				console.log(arr)
 				var $table=$("#cart");
 				for (var i=0;i<arr.length;i++) {
-					sumUp();
+					
 					var $tbody=$('<tbody>');
 					$tr2=$('<tr class="fff" id="two">');
 					$tr3=$('<tr class="fff" class="three">');
@@ -50,7 +50,7 @@
 					$('<td>').html("闫森：黑色    尺码：L").appendTo($tr2);
 					$('<td class="price-o">').html(arr[i].price).appendTo($tr2);
 					$('<td class="yellow">').html('<p class="pCenter">'+'<span class="tab-old">'+"-"+'</span>'+'<input type="text" class="tab-tex" value="1"/>'+'<span class="tab-add">'+"+"+'</span>'+'</p>').appendTo($tr2);
-					$('<td class="sumPrice">').appendTo($tr2);
+					$('<td class="sumPrice">').html("59.00").appendTo($tr2);
 					$('<td class="del">').html("删除").appendTo($tr2);
 					$("<td colspan='6'>").html('<label class="check1">'+'<input type="checkbox" value="全选" />'+"全选"+'</label>'+"<p class='pRight'>"+'数量：'+'<span>'+"1"+'</span>'+"件  金额：￥"+'<span>'+arr[i].price+'</span>'+ "邮费：￥"+'<span>'+'0'+'</span>'+'</p>').appendTo($tr3);
 					$('<td colspan="6" class="tRight"></td>').html("总额："+"<span>"+arr[i].price+"</span>").appendTo($tr4);
@@ -67,32 +67,26 @@
 				var i=$('.tab-tex').val();
 				console.log(i);
 				$('.tab-add').on('click',function(){
-					$('.tab-tex').val(i++);					
+					$(this).prev("input").val(i++);	
+					var num=$(this).prev("input").val();
+					console.log(num);
+					var newPrice=$(this).parents("td").prev("td").text();
+					sum=newPrice*num;
+					console.log(sum);
+					$(this).parents("td").next("td").html(sum+".00");
 				});
 				$('.tab-old').on('click',function(){					
-					$('.tab-tex').val(i--);
-					if(i==0){
-						$('.tab-tex').val("0");
-					}
+					$(this).next("input").val(i--);	
+					console.log(i);
+					var num1=$(this).next("input").val();
+					console.log(num1);
+					var newPrice1=$(this).parents("td").prev("td").text();
+					sum1=newPrice1*num1;
+					console.log(sum1);
+					$(this).parents("td").next("td").html(sum1+".00");
+					
+					
 				});
-				/*var sum=$(".price-o").html()*$('.tab-tex').val();
-				$(".sumPrice").html(sum);
-				console.log(sum);
-				console.log($('.tab-tex').val());*/
-				function sumUp(){
-					//汇总支付金额与商品数量
-					var sum=0;
-					var allnum=0;
-					$('#cart tbody').each(function(){
-						var price=$(".price-o").html();
-						var num=$('.tab-tex').val();
-						sum+=price*num;
-						$(".sumPrice").html(sum);
-						allnum+=parseInt(num);
-						$('.tab-tex').val(allnum);
-					});
-				}
-				
 			})
 		</script>
 	</head>
@@ -178,30 +172,6 @@
 				</ul>
 			</div>
 			<div id="table1">
-				<table border="1"width="1000" height="180">
-					<tr>
-						<td colspan="2">商品</td>
-						<td>单价（元）</td>
-						<td>数量（件）</td>
-						<td>金额（元）</td>
-						<td>操作</td>
-					</tr>
-					<tr class="fff">
-						<td class="tab1"><input type="checkbox"/><span class="buyss"><img src="../css/img/clear.png"/></span><span class="tab1-tex">【独家首发+全国包邮】仅59元，尊享原价398元的2015爆款卡通时尚打底衫尊享原价398元的2015爆款卡通时尚打底衫尊享原价398元的2015爆款卡通时尚打底衫</span></td>
-						<td>闫森：黑色    尺码：L</td>
-						<td  class="oprice"></td>
-						<td class="yellow"><p class="pCenter"><span>-</span><input type="text"/><span>+</span></p></td>
-						<td>59</td>
-						<td>删除</td>
-					</tr>
-					<tr class="fff">
-						<td colspan="6"><label class="check1"><input type="checkbox" value="全选" />全选</label><p class='pRight'>数量：<span>1</span>件  金额：￥<span>59.00</span> 邮费：￥<span>0</span></p></td>
-					</tr>
-					<tr>
-						<td colspan="6" class="tRight">总额：￥<span>59.00</span></td>
-					</tr>
-				</table>
-				
 				<table border="1"width="1000" height="180" id="cart">
 					<tr>
 						<td colspan="2">商品</td>

@@ -38,6 +38,7 @@
 					}
 				});
 				
+				
 				//保存cooki
 				//提交按钮
 				var $btn=$('#btn');
@@ -46,9 +47,7 @@
 				//邮箱
 				var $username1=$('#username1');
 				//密码
-				var $password=$('#password');
-			
-				//给点击立即注册一个事件，提交后保存cookie
+				var $password=$('#password');			
 				var oCheck=document.getElementById("check")
 				$btn.on('click',function(){
 					if (oCheck.checked)
@@ -56,19 +55,12 @@
 						//取出注册的用户名和密码
 						var strUsername=$username.val();
 						var strUsername1=$username1.val();
-						console.log(strUsername);
-						console.log(strUsername1)
 						var strPassword=$password.val();
 						
 						//保存到cookie中
-						var oDate=new Date();
-						
-						//设置保存的天数
-						oDate.setDate(oDate.getDate() + 7);
-						document.cookie = "username="+strUsername+";expires=" + oDate;
-						document.cookie = "username1="+strUsername1+";expires=" + oDate;
-						document.cookie = "password="+strPassword+";expires=" + oDate;
-						
+						addCookie("username", strUsername, 7);
+						addCookie("username1", strUsername1, 7);
+						addCookie("password", strPassword, 7);
 						
 					}
 					alert("注册成功")

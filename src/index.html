@@ -7,9 +7,9 @@
 		<link href='css/common.css' rel="stylesheet"/>
 		<link href='css/jquery.myFocus.css' rel="stylesheet" />
 		<link href="css/index.css" rel="stylesheet" />
-		<script src="js/common1.js"></script>
 		<script src="assets/jquery-1.12.0.js"></script>
 		<script src='js/jquery.myFocus.js'></script>
+		<script src="js/mycookie.js"></script>
 		<script>
 			$(function(){
 				//鼠标滑过首页时出现窗口
@@ -45,14 +45,14 @@
 				//物品楼层
 				var $floorList = $('.floorList');
 				$.ajax({
-					url:'floorList.json',
+					url:'data/floorList.json',
 					dataType:'json',
 					success:function(res){						
 						var $ul = $('<ul/>');
 						$.each(res,function(idx,item){
 							var html = '<p class="tex">'+item.title+'</p>' 
 								+ '<p class="buyImg" >'+'<img src="'+item.imgurl+'" />'+'</p>'
-								+ '<p class="price">'+item.price+'<button class="btn1">'+"抢购"+'</button>'+'</p>'
+								+ '<p class="price">'+item.price+'<a class="btn1">'+"抢购"+'</a>'+'</p>'
 								+'<p class="cost">'+"原价："+'<del>'+item.oldprice+'</del>'+'<span class="rate">'+"折扣："
 								+'<span class="red">'+item.off+'</span>'+"折"+'<span class="red red1">'
 								+item.buyCount+'</span>'+"人已购买"+"</span>"+'</p>';
@@ -63,14 +63,14 @@
 				})				
 				var $floorList4 = $('.floorList4');
 				$.ajax({
-					url:'floor4.json',
+					url:'data/floor4.json',
 					dataType:'json',					
 					success:function(res){						
 						var $ul = $('<ul/>');
 						$.each(res,function(idx,item){
 							var html = '<p class="tex">'+item.title+'</p>' 
 								+ '<p class="buyImg" >'+'<img src="'+item.imgurl+'" />'+'</p>'
-								+ '<p class="price">'+item.price+'<button class="btn1">'+"抢购"+'</button>'+'</p>'
+								+ '<p class="price">'+item.price+'<a href="html/Detail.html" class="btn1">'+"抢购"+'</a>'+'</p>'
 								+'<p class="cost">'+"原价："+'<del>'+item.oldprice+'</del>'+'<span class="rate">'+"折扣："
 								+'<span class="red">'+item.off+'</span>'+"折"+'<span class="red red1">'
 								+item.buyCount+'</span>'+"人已购买"+"</span>"+'</p>';
@@ -78,7 +78,7 @@
 						});	
 						$floorList4.append($ul);
 					}
-				})
+				})				
 			})
 			
 		</script>
@@ -87,13 +87,13 @@
 		<div class="top">
 			<span class="topLeft">
 				<a href="#">Hi,欢迎来到阿窝团!</a>
-				<a href="#">请登录</a>
-				<a href="#">免费注册</a>
-				<a href="#">快速登录</a>
+				请<a href="html/login.html" style="color:red;" id="login">登录</a>
+				<a href="html/resign.html" style="color:red;">免费注册</a>
+				<a href="html/login.html" style="color:red;">快速登录</a>
 			</span>
 			<span class="topRight">
 				<a href="#" class='tel'>400-188-1717</a>
-				<a href="#" class='car'>购物车：0件商品</a>
+				<a href="#" class='car'>购物车：<b style="color:orange">0</b>件商品</a>
 				<a href="#" class='arrow'>我的订单<img src="css/img/arrow.png"></a>
 				<a href="#" class="star">加入收藏</a>
 				<a href="#" class="jia">关注我们</a>

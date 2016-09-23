@@ -69,3 +69,22 @@ body{background: #f6f6f6;height:100%;}
 .kefu .noBottom .g1{color:#26890f;}
 .kefu .noBottom .g2{color:#555555;font-size: 17px;}
 .kefu .topBack{width:100px;height:28px;border:1px solid #ccc;font-size:14px;color:#666666;background:#ededed;text-align: center;line-height: 28px;background: url(img/topBack.png) no-repeat 9px 10px;}
+
+#approver{display:none;width:550px;height:450px;background:#fff;border:1px solid #d11824;z-index:10;position: absolute;left:28%;top:20%;}
+#approver .a1{height:40px;border-bottom:1px solid #ddd;line-height:40px;padding-left:12px;background:#f7f4f7;margin-bottom:10px;}
+#approver .a1 .endTime{margin-left:200px;width:217px;font-size:14px;font-weight:bold;}
+#approver dl{height:68px;line-height:34px;padding-left:18px;}
+#approver dl .color{display:inline-block;width:40px;height:25px;border:1px solid #ddd;margin-right:15px;line-height:20px;text-align:center;}
+#approver dl .color1{border:3px solid #f00;}
+#approver dl dd .color1{border:3px solid #f00;}
+#approver dl .size{display:inline-block;padding:0 5px;border:1px solid #ddd;margin-right:15px;}
+#approver .count{height:24px;border:none;position:relative;line-height:24px;}
+#approver .count span{display:inline-block;width:13px;height:24px;background:#DACCDA;color:#f6f6f6;text-align: center;position:relative;}
+#approver .count input{width:50px;height:20px;background:#fff;text-align: center;position:relative;top:2px;}
+#approver .count a{margin-left:25px;}
+#approver .xuanze{width:500px;height:28px;padding-left:10px;border:1px solid #ddd;line-height:28px;margin:8px 0 0 15px;}
+#approver .add{width:124px;height:33px;background:#ff5800;border-radius:5px;margin:10px 0 0 15px;font-size:16px;color:#900000;line-height:33px;text-align:center;}
+#approver .continue{width:520px;height:54px;margin:30px 0 0 15px;line-height:20px;}
+#approver .con-tex{display:inline-block;width:180px;height:50px;margin-left:20px;}
+#approver .liulan{width:106px;height:37px;display:inline-block;background:#2e8e30;color:#fff;line-height:37px;text-align:center;font-size:18px;margin-right:15px;}
+#approver .jiesuan{width:142px;height:37px;display:inline-block;background:#ed0734;color:#fff;line-height:37px;text-align:center;font-size:18px;}

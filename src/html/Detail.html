@@ -10,7 +10,8 @@
 		<script src="../assets/jquery-1.12.0.js"></script>
 		<script src='../js/mycookie.js'></script>
 		<script src='../js/jquery.elevateZoom.js'></script>
-		<script>				
+		<script>
+			//倒计时（调用函数）
 			var SysSecond;
 		    var InterValObj;
 		    $(document).ready(function() {
@@ -33,21 +34,36 @@
 				console.log(arr);
 				//加入购物车按钮
 				$('#btnBuy').click (function(){								
-				var obj = {};
-				obj.detImg=$('#zoom_01').attr('src');
-				obj.tex=$('.tex11').html();
-				obj.price = $('.b1').html();					
-				// 将创建好的商品添加到数组中
-				arr.push(obj);
-				addCookie("arr", JSON.stringify(arr));		
-				alert("添加成功");
 				
+					$("#approver").show(function(){
+						
+						$("body").css({"background":"#555","opacity":"0.8"});
+						$("#approver").css("opacity","1");
+					});
+					$("#approver .add").on("click",function(){
+						var obj = {};
+						obj.detImg=$('#zoom_01').attr('src');
+						obj.tex=$('.tex11').html();
+						obj.price = $('.b1').html();					
+						// 将创建好的商品添加到数组中
+						arr.push(obj);
+						addCookie("arr", JSON.stringify(arr));		
+						alert("添加成功");
+					});
+					$("#approver .xx").on("click",function(){
+						$("#approver").hide(function(){
+							$("body").css({"background":"#f6f6f6","opacity":"1"});
+					});
+					})
+					
 				})
 				
 				// 实现放大镜效果				
 				$('#zoom_01').elevateZoom({});
 
 		    });
+
+			//封装倒计时函数
 		    function SetRemainTime() {
 		      	if (SysSecond > 0) {
 		      		SysSecond = SysSecond - 1;
@@ -59,7 +75,8 @@
 		      		$('#minues').html(minite).css({'color':'white','position':'relative','top':0});
 		      		$('#hour').html(hour).css({'color':'white','position':'relative','top':0});
 		      		$('#second').html(second).css({'color':'white','position':'relative','top':0});
-		       	} else {
+					$(".endTime").html("距结束时间："+day+"天"+hour+"时"+minite+"分"+second+"秒").css({'color':'orange'});	       	
+				} else {
 		       		window.clearInterval(InterValObj);
 		       	}
 		    }
@@ -138,6 +155,25 @@
 			</div>
 		</div>	
 		
+		<div id="approver">
+			<p class="a1"><span  class="red-Tex" style="color:red;">选择规格和数量</span><span class="endTime">距结束时间</span><a class="xx" style="color:#757575;font-size:36px;float:right;">&times;</a></p>
+			<dl>
+				<dt>颜色：</dt>
+				<dd><span class="color">白色</span><span class="color color1">黑色</span></dd>
+			</dl>
+			<dl>
+				<dt>尺码：</dt>
+				<dd><span class="size color1">L</span><span class="size">M</span><span class="size">S</span class="size"><span class="size">XL</span><span class="size">XXL</span><span class="size">M</span><span class="size">XXXL</span></dd>
+			</dl>
+			<dl>
+				<dt>数量：</dt>
+				<dd class="count"><span>-</span><input type="text" value="1"/><span>+</span><a style="color:red;">本单包邮</a>
+			</dl>
+			<p class="xuanze">您选择了：<span style="color:red;">黑色 L 1件</span></p>
+			<p class="add"><a>确认添加</a></p>
+			<p class="continue"><img src="../css/img/success.png"/><span class="con-tex">成功加入购物车<br>购物车共有1中商品，共1件</span><a class="liulan" href="Detail.html">《继续浏览</a><a class="jiesuan" href="clearPrice.html">去购物车结算》</a></p>
+
+		</div>
 		<div id='contend'>
 			<div id="dets">
 				<div class="det">

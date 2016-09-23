@@ -15,56 +15,116 @@
 		<script src="../js/mycookie.js"></script>
 		<script type="text/javascript">
 			$(function(){
-				// 表单验证插件
-				$("#form1").validate({
-
-					// 设置验证规则
-					rules:{
-						email:{required:true,email:true},
-						username:{required:true,rangelength:[4,16]},
-						password:{required:true,minlength:8},
-						password2:{required:true,equalTo:"#password"},
-						checkbox:{required:true}						
-					},
-
-					// 设置提示信息
-					messages:{
-						email:{email:'亲，邮箱地址哦'},
-						username:{rangelength:'用户名为4-6个字符'},
-						parssword:{rangelength:'为了账户安全，建议最少为6个字符以上'},
-						password2:{equalTo: "密码不一致"},
-						checkbox:{required:""},
-						error:$('.msgRed1 error')
-					}
-				});
-				
-				
-				//保存cooki
-				//提交按钮
-				var $btn=$('#btn');
-				//用户名
-				var $username=$('#username');
 				//邮箱
-				var $username1=$('#username1');
-				//密码
-				var $password=$('#password');			
-				var oCheck=document.getElementById("check")
-				$btn.on('click',function(){
-					if (oCheck.checked)
-					{
-						//取出注册的用户名和密码
-						var strUsername=$username.val();
-						var strUsername1=$username1.val();
-						var strPassword=$password.val();
-						
-						//保存到cookie中
-						addCookie("username", strUsername, 7);
-						addCookie("username1", strUsername1, 7);
-						addCookie("password", strPassword, 7);
-						
-					}
-					alert("注册成功")
+				$('#username1').focus(function () { 
+					$('#username1').val(''); 
 				})
+				//用户名
+				$('#username').focus(function () { 
+					$('#username').val(''); 
+				})
+				//密码
+				$('#password').focus(function () { 
+					$('#password').val(''); 
+				})
+				//验证邮箱
+				var s;
+				$('#username1').on('blur',function () { 					
+					var str=this.value;
+					var reg = /\w+@[a-zA-Z0-9]+\.[a-zA-Z]+/;
+					s=reg.test(str);
+					if (s==false)
+					{ 
+						$('#username1').val('邮箱格式不正确').css('color','red'); 
+					} 
+				}) 
+				//验证用户名
+				var s1;
+				$('#username').on('blur',function () { 					
+					var str1=this.value;
+					var reg = /^[a-zA-Z]\w{5,19}$/;
+					s1=reg.test(str1);
+					if (s1==false)
+					{ 
+						$('#username').val('用户名格式不正确').css('color','red'); 
+					} 
+				}) 
+				//验证密码
+				var s2;
+				$('#password').on('blur',function () { 
+					var str2=this.value;
+					var reg=/^.{6,20}$/;
+					s2=reg.test(str2);
+					if(s2==false){						
+						$('.ospan').html('密码不合法').css('color','red');
+					}
+				}) 
+				
+				//验证确认密码
+				/*var s3;
+				$('#password2').on('blur',function(){
+					//两次密码输入必须一致
+					var str3=this.value;
+					if (str2!=str3)
+					{
+						$('#password2').val('密码不一致').css('color','red'); 
+					}
+					
+				})*/
+				$('#btn').click(function () {
+					console.log(s);
+					console.log(s1);
+					console.log(s2);
+					if (s && s1 && s2) 
+					{ alert('注册成功！'); } 
+					else { alert('注册失败！'); } 
+				}) 
+
+			//保存cooki
+			// 登录按钮
+		//var btnLogin = $("#btn");
+		
+		var oCheck = document.getElementById("check");
+		//var oUsername = document.getElementById("username");
+		//var oUsername1 = document.getElementById("username1");
+		//var oPassword = document.getElementById("password");
+	
+		// 调用自己的函数，来获取当前页面中的 cookie
+		var username = getCookie("username");
+		var username1 = getCookie("username1");
+		var password = getCookie("password");
+	
+		if (username && username1 && password)
+		{
+			$("#username").val(username);
+			$("#username1").val(username1);
+			$("#password").val(password);
+			
+			alert("注册成功XXXXX！");
+		}
+	
+		$("#btn").click(function() {
+	
+	
+			// oCheck.checked 为 true，那么就勾选了，否则就没勾选
+			if (oCheck.checked)
+			{
+	
+				// 勾选了，才保存 cookie
+				// alert(oPassword.value);
+				// 取出用户名和密码
+				var strUsername = $("#username").val();
+				var strUsername1 = $("#username1").val();
+				var strPassword = $("#password").val();
+	
+	
+				// 调用自己写的函数，实现添加 cookie
+				addCookie("username", strUsername, 7);
+				addCookie("username1", strUsername1, 7);
+				addCookie("password", strPassword, 7);
+			}
+			alert("注册成功！");
+		});
 				
 			});
 		</script>
@@ -83,19 +143,21 @@
 				<p>
 		            <label for="username" class='label1'>邮箱</label>
 		            <input type="text" name="email" class='username' id="username1">
+		            <span class='msgRed'></span>
 		        </p>
 		        <p>
 		            <label for="username" class='label2'>用户名</label>
 		            <input type="text" id="username" class='username' name="username" placeholder="请输入用户名">
-		            <span class='msgRed msgRed1'>用户名为4-16个字符</span>
+		            <span class='msgRed msgRed1'></span>
 		        </p>
 		            <label for="password" class='label3'>密码</label>
-		            <input type="password" id="password" name="password">
-		            <span class='msgRed msgRed2'>为了账户安全，建议最少为6个字符以上</span>
+		            <input type="password" id="password" name="password"><span class="ospan"><span>
+		            <!--<span class='msgRed msgRed2'></span>-->
 		        </p>
 		        </p>
 		            <label for="password" class='label4' >确认密码</label>
 		            <input type="password" id="password2" name="password2">
+		            <span class='msgRed'></span>
 		        </p>
 		        <p class="log">		         
                    <label><input type="checkbox" value="记住登录名" name="checkbox" id="check">我已阅读并接受</label>

@@ -17,22 +17,28 @@
 				var oPassword = document.getElementById("password");
 				// 调用自己的函数，来获取页面中的 cookie
 				var username1 = getCookie("username1");
-				var passw = getCookie("password");
 				var username=getCookie("username");
+				var passw = getCookie("password");
+				
 				console.log(username1);
 				console.log(username);
 				console.log(passw);
 				
+				
+				var name = getCookie("name");
+				if (name)
+				{
+					oUsername.value = name;			
+				}	
+				
 				btnLogin.onclick = function() {
 					// oCheck.checked 为 true，那么就勾选了，否则就没勾选
 					if (oCheck.checked)
-					{
-						var strUsername = oUsername.value;
-						var strPassword = oPassword.value;
-						// 调用自己写的函数，实现添加 cookie
-						addCookie("name", strUsername, 7);
-						addCookie("pass", strPassword, 7);
-					}
+						{
+							var strUsername = oUsername.value;
+							addCookie("name", strUsername);
+						}
+					
 					
 					var aa=oUsername.value;
 					console.log(aa);

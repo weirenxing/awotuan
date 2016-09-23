@@ -8,40 +8,16 @@
 		<link href='css/jquery.myFocus.css' rel="stylesheet" />
 		<link href="css/index.css" rel="stylesheet" />
 		<script src="assets/jquery-1.12.0.js"></script>
+		<script src="js/common.js"></script>
 		<script src='js/jquery.myFocus.js'></script>
 		<script src="js/mycookie.js"></script>
 		<script>
-			$(function(){
-				//鼠标滑过首页时出现窗口
-				$('.first').on('mouseenter',function(){
-					$('.window').show();
-				});
-				
-				//鼠标滑过select热门城市时出现弹窗
-				$('#over').on('mouseover',function(){
-					$('.city').show();
-				})
-				//点击关闭按钮隐藏弹窗
-				$('.city').on('click','.btnClose',function(){
-					$('.city').hide();
-				})
-				
+			$(function(){								
 				//轮播图
 				$('.myfocus').myFocus({
 	                 imgs:['img/slide1.jpg','img/slide2.jpg','img/slide3.jpg']
 	           });
-	           
-	           //客服小窗口随滚动条移动，
-				$(window).scroll(function() {		
-					var top = $(window).scrollTop();			
-						$(".kefu").css({ top: top + "px" });			
-				});
-				//回到顶部
-				$(".topBack").click(function(){
-					$('.kefu').animate({top:0},1000);
-					$('body,html').animate({'scrollTop':0},1000);
-				})
-				
+
 				//物品楼层
 				var $floorList = $('.floorList');
 				$.ajax({
@@ -52,7 +28,7 @@
 						$.each(res,function(idx,item){
 							var html = '<p class="tex">'+item.title+'</p>' 
 								+ '<p class="buyImg" >'+'<img src="'+item.imgurl+'" />'+'</p>'
-								+ '<p class="price">'+item.price+'<a class="btn1">'+"抢购"+'</a>'+'</p>'
+								+ '<p class="price">'+item.price+'<a class="btn1" href="html/Detail.html">'+"抢购"+'</a>'+'</p>'
 								+'<p class="cost">'+"原价："+'<del>'+item.oldprice+'</del>'+'<span class="rate">'+"折扣："
 								+'<span class="red">'+item.off+'</span>'+"折"+'<span class="red red1">'
 								+item.buyCount+'</span>'+"人已购买"+"</span>"+'</p>';
@@ -60,7 +36,8 @@
 						});	
 						$floorList.append($ul);
 					}
-				})				
+				})
+				
 				var $floorList4 = $('.floorList4');
 				$.ajax({
 					url:'data/floor4.json',

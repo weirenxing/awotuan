@@ -10,49 +10,43 @@
 		<script src="../assets/jquery-1.12.0.js"></script>
 		<script type="text/javascript"> 
 			$(function(){				
-				// 登录按钮
-				var btnLogin = document.getElementById("btn");				
+				// 登录按钮				
 				var oCheck = document.getElementById("check");
-				var oUsername = document.getElementById("username");
-				var oPassword = document.getElementById("password");
-				// 调用自己的函数，来获取页面中的 cookie
+				//获取注册页面注册的用户名、邮箱和密码
 				var username1 = getCookie("username1");
 				var username=getCookie("username");
 				var passw = getCookie("password");
 				
 				console.log(username1);
 				console.log(username);
-				console.log(passw);
+				console.log(passw);				
 				
-				
+				//获取当前页面的用户名
 				var name = getCookie("name");
 				if (name)
 				{
-					oUsername.value = name;			
+					$("#username").val(name);			
 				}	
 				
-				btnLogin.onclick = function() {
-					// oCheck.checked 为 true，那么就勾选了，否则就没勾选
+				$("#btn").click(function() {
+					//当点击记住用户名按钮框时保存cookie
 					if (oCheck.checked)
 						{
-							var strUsername = oUsername.value;
+							var strUsername = $("#username").val();
 							addCookie("name", strUsername);
-						}
+						}					
 					
-					
-					var aa=oUsername.value;
-					console.log(aa);
-					var bb=oPassword.value;
-					console.log(bb);
-					//判断输入的值是否为页面保存了的东西
-					if ((aa==username1||aa==username)&&bb ==passw)
+					var name1=$("#username").val();
+					var name2=$("#password").val();
+					//判断输入值是否与cookie保存的注册账户一直
+					if ((name1 == username1 || aa == username) && name2 == passw)
 					{
 						alert("登录成功！");
 					}else{
-						alert("用户名不存在或者密码不正确");
+						alert("用户不存在或密码不正确");
 					}
-				}
-				})
+				}); 
+			})
 				
 		</script> 
 

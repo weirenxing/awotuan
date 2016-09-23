@@ -8,8 +8,8 @@ body{background:#f3f1f4;}
 .resign .log1{margin:27px 0 0 20px;width:400px;height:28px;border-bottom:1px solid #dddddd;}
 .resign .log1 a{color:#d01320;font-size:18px;margin-right:15px;}
 .resign .border-w{width:400px;border-bottom: 1px solid white;margin-left:20px;}
-.resign .username,#password,#password2{width:250px;height:32px;border-radius:7px;margin-left:10px;border: 1px solid #e5e3e5;text-indent: 10px;}
-.resign .username{margin-top:20px;}
+.resign .username,#password,#password2{margin-top:20px;width:250px;height:32px;border-radius:7px;margin-left:10px;border: 1px solid #e5e3e5;text-indent: 10px;}
+.resign .username{}
 .resign .label1{margin-left:70px;}
 .resign .label2{margin-left:58px;}
 .resign .label3{margin-left:70px;}

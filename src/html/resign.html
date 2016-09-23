@@ -56,76 +56,49 @@
 					var reg=/^.{6,20}$/;
 					s2=reg.test(str2);
 					if(s2==false){						
-						$('.ospan').html('密码不合法').css('color','red');
+						$('#password').val('密码不合法').css('color','red');
 					}
 				}) 
 				
-				//验证确认密码
-				/*var s3;
-				$('#password2').on('blur',function(){
-					//两次密码输入必须一致
-					var str3=this.value;
-					if (str2!=str3)
-					{
-						$('#password2').val('密码不一致').css('color','red'); 
-					}
-					
-				})*/
 				$('#btn').click(function () {
-					console.log(s);
-					console.log(s1);
-					console.log(s2);
 					if (s && s1 && s2) 
-					{ alert('注册成功！'); } 
-					else { alert('注册失败！'); } 
+					{ 
+						alert('注册成功！'); 
+					}
+					else { 
+						alert('注册失败！');
+					}
 				}) 
 
-			//保存cooki
-			// 登录按钮
-		//var btnLogin = $("#btn");
-		
-		var oCheck = document.getElementById("check");
-		//var oUsername = document.getElementById("username");
-		//var oUsername1 = document.getElementById("username1");
-		//var oPassword = document.getElementById("password");
-	
-		// 调用自己的函数，来获取当前页面中的 cookie
-		var username = getCookie("username");
-		var username1 = getCookie("username1");
-		var password = getCookie("password");
-	
-		if (username && username1 && password)
-		{
-			$("#username").val(username);
-			$("#username1").val(username1);
-			$("#password").val(password);
+				var oCheck = document.getElementById("check");
+				// 调用自己的函数，来获取当前页面中的 cookie
+				var username = getCookie("username");
+				var username1 = getCookie("username1");
+				var password = getCookie("password");
 			
-			alert("注册成功XXXXX！");
-		}
-	
-		$("#btn").click(function() {
-	
-	
-			// oCheck.checked 为 true，那么就勾选了，否则就没勾选
-			if (oCheck.checked)
-			{
-	
-				// 勾选了，才保存 cookie
-				// alert(oPassword.value);
-				// 取出用户名和密码
-				var strUsername = $("#username").val();
-				var strUsername1 = $("#username1").val();
-				var strPassword = $("#password").val();
-	
-	
-				// 调用自己写的函数，实现添加 cookie
-				addCookie("username", strUsername, 7);
-				addCookie("username1", strUsername1, 7);
-				addCookie("password", strPassword, 7);
-			}
-			alert("注册成功！");
-		});
-				
+				if (username && username1 && password)
+				{
+					$("#username").val(username);
+					$("#username1").val(username1);
+					$("#password").val(password);
+				}
+			
+				$("#btn").click(function() {
+					if (oCheck.checked)
+					{
+						// 取出用户名和密码
+						var strUsername = $("#username").val();
+						var strUsername1 = $("#username1").val();
+						var strPassword = $("#password").val();
+						
+						// 调用自己写的函数，实现添加 cookie
+						addCookie("username", strUsername, 7);
+						addCookie("username1", strUsername1, 7);
+						addCookie("password", strPassword, 7);
+					}
+					alert("注册成功！");
+				});
+						
 			});
 		</script>
 	</head>

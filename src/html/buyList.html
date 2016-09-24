@@ -8,6 +8,7 @@
 		<link href="../css/buyList.css" rel="stylesheet" />
 		<script src="../assets/jquery-1.12.0.js"></script>
 		<script src="../js/common.js"></script>
+		<script src="../js/mycookie.js"></script>
 		<script>			
 	        jQuery(function($){	         	    	         	    
 	            var $buyList = $('.buyList');
@@ -56,6 +57,9 @@
 				});	
 				// 手动触发滚动事件
 				$(window).trigger('scroll');
+				//获取用户名
+				var str=getCookie("username");
+				$("#login").html(str).css("color","orangered");
 	        })	            
 		</script>
 	</head>
@@ -63,9 +67,9 @@
 		<div class="top">
 			<span class="topLeft">
 				<a href="#">Hi,欢迎来到阿窝团!</a>
-				请<a href="html/login.html" style="color:red;" id="login">登录</a>
-				<a href="html/resign.html" style="color:red;">免费注册</a>
-				<a href="html/login.html" style="color:red;">快速登录</a>
+				<a href="html/login.html" id="login">请<i style="color:red;">登录</i></a>
+				<a href="html/resign.html">免费注册</a>
+				<a href="html/login.html">快速登录</a>
 			</span>
 			<span class="topRight">
 				<a href="#" class='tel'>400-188-1717</a>

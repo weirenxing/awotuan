@@ -48,7 +48,7 @@
 						// 将创建好的商品添加到数组中
 						arr.push(obj);
 						addCookie("arr", JSON.stringify(arr));		
-						alert("添加成功");
+						$(".none").show();
 					});
 					$("#approver .xx").on("click",function(){
 						$("#approver").hide(function(){
@@ -57,6 +57,25 @@
 					})
 					
 				})
+				$("#approver .color").click(function(){
+					$(this).addClass("color1").siblings().removeClass("color1");
+					var color=$(this).html();
+					$("b").html(color);
+				});
+				$("#approver .size").click(function(){
+					$(this).addClass("color1").siblings().removeClass("color1");
+					var size=$(this).html();
+					$("i").html(size);
+				});
+				var i=0;
+				$('.tab-add').on('click',function(){
+					$(this).prev("input").val(i++);
+					$("strong").text(i);
+				});
+				$('.tab-old').on('click',function(){					
+					$(this).next("input").val(i--);
+					$("strong").text(i);
+				});
 				
 				// 实现放大镜效果				
 				$('#zoom_01').elevateZoom({});
@@ -159,19 +178,19 @@
 			<p class="a1"><span  class="red-Tex" style="color:red;">选择规格和数量</span><span class="endTime">距结束时间</span><a class="xx" style="color:#757575;font-size:36px;float:right;">&times;</a></p>
 			<dl>
 				<dt>颜色：</dt>
-				<dd><span class="color">白色</span><span class="color color1">黑色</span></dd>
+				<dd><span class="color">白色</span><span class="color">黑色</span></dd>
 			</dl>
 			<dl>
 				<dt>尺码：</dt>
-				<dd><span class="size color1">L</span><span class="size">M</span><span class="size">S</span class="size"><span class="size">XL</span><span class="size">XXL</span><span class="size">M</span><span class="size">XXXL</span></dd>
+				<dd><span class="size">L</span><span class="size">M</span><span class="size">S</span class="size"><span class="size">XL</span><span class="size">XXL</span><span class="size">M</span><span class="size">XXXL</span></dd>
 			</dl>
 			<dl>
 				<dt>数量：</dt>
-				<dd class="count"><span>-</span><input type="text" value="1"/><span>+</span><a style="color:red;">本单包邮</a>
+				<dd class="count"><span class="tab-old">-</span><input type="text" value="1"  class="tab-tex"/><span class="tab-add">+</span><a style="color:red;">本单包邮</a>
 			</dl>
-			<p class="xuanze">您选择了：<span style="color:red;">黑色 L 1件</span></p>
+			<p class="xuanze">您选择了：<span style="color:red;"><b></b> <i></i> <strong></strong>件</span></p>
 			<p class="add"><a>确认添加</a></p>
-			<p class="continue"><img src="../css/img/success.png"/><span class="con-tex">成功加入购物车<br>购物车共有1中商品，共1件</span><a class="liulan" href="Detail.html">《继续浏览</a><a class="jiesuan" href="clearPrice.html">去购物车结算》</a></p>
+			<p class="continue"><span class="none" style="display: none;"><img src="../css/img/success.png"/><span class="con-tex">成功加入购物车<br>购物车共有1中商品，共1件</span></span><a class="liulan" href="Detail.html">《继续浏览</a><a class="jiesuan" href="clearPrice.html">去购物车结算》</a></p>
 
 		</div>
 		<div id='contend'>

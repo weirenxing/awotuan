@@ -4,8 +4,8 @@ body{background:#f3f1f4;}
 #top .msg a{color:#fffaa8;}
 
 #resignList{width:100%;height:620px;padding-left:120px;}
-.resign{width:450px;min-height: 420px;background:#eeecef;border:1px solid #e1e0e2;}
-.resign .log1{margin:27px 0 0 20px;width:400px;height:28px;border-bottom:1px solid #dddddd;}
+.resign{width:475px;min-height: 420px;background:#eeecef;border:1px solid #e1e0e2;}
+.resign .log1{margin:27px 0 0 20px;width:435px;height:28px;border-bottom:1px solid #dddddd;}
 .resign .log1 a{color:#d01320;font-size:18px;margin-right:15px;}
 .resign .border-w{width:400px;border-bottom: 1px solid white;margin-left:20px;}
 .resign .username,#password,#password2{margin-top:20px;width:250px;height:32px;border-radius:7px;margin-left:10px;border: 1px solid #e5e3e5;text-indent: 10px;}
@@ -18,7 +18,7 @@ body{background:#f3f1f4;}
 .resign .log{margin:20px 0 0 102px;position:relative;}
 .resign .log #btn{width:150px;height:40px;color:white;background:#ffab55;font-size:16px;border-radius:7px;border:none;}
 .resign .log a{color:#d41f2b;}
-.resign .border-g{width:400px;border-bottom: 1px solid #e1e0e2;margin:20px 0 0 20px;}
+.resign .border-g{width:435px;border-bottom: 1px solid #e1e0e2;margin:20px 0 0 20px;}
 .resign .log-else{width:400px;border-top:1px solid white ;margin-left:20px;}
 .resign .log-else p{margin-top:10px;}
 .resign .log-else dl{width:96px;height:25px;margin-right:8px;margin-top:10px;padding-top:4px;float:left;border:1px solid #cfc8c8;line-height: 20px;text-align: center;}

@@ -15,72 +15,41 @@
 		<script src="../js/mycookie.js"></script>
 		<script type="text/javascript">
 			$(function(){
-				//邮箱
-				$('#username1').focus(function () { 
-					$('#username1').val(''); 
-				})
-				//用户名
-				$('#username').focus(function () { 
-					$('#username').val(''); 
-				})
-				//密码
-				$('#password').focus(function () { 
-					$('#password').val(''); 
-				})
-				//验证邮箱
-				var s;
-				$('#username1').on('blur',function () { 					
-					var str=this.value;
-					var reg = /\w+@[a-zA-Z0-9]+\.[a-zA-Z]+/;
-					s=reg.test(str);
-					if (s==false)
-					{ 
-						$('#username1').val('邮箱格式不正确').css('color','red'); 
-					} 
-				}) 
-				//验证用户名
-				var s1;
-				$('#username').on('blur',function () { 					
-					var str1=this.value;
-					var reg = /^[a-zA-Z]\w{5,19}$/;
-					s1=reg.test(str1);
-					if (s1==false)
-					{ 
-						$('#username').val('用户名格式不正确').css('color','red'); 
-					} 
-				}) 
-				//验证密码
-				var s2;
-				$('#password').on('blur',function () { 
-					var str2=this.value;
-					var reg=/^.{6,20}$/;
-					s2=reg.test(str2);
-					if(s2==false){						
-						$('#password').val('密码不合法').css('color','red');
+				// 表单验证插件
+				$("#form1").validate({
+					// 设置验证规则
+					rules:{
+						email:{required:true,email:true},
+						username:{required:true,rangelength:[4,16]},
+						password:{required:true,minlength:8},
+						password2:{required:true,equalTo:"#password"},
+						checkbox:{required:true}						
+					},
+
+					// 设置提示信息
+					messages:{
+						email:{email:'邮箱格式不正确'},
+						username:{rangelength:'用户名为4-6个字符'},
+						parssword:{rangelength:'为了账户安全，建议最少为6个字符以上'},
+						password2:{equalTo: "密码不一致"},
+						checkbox:{required:""},
+						error:$('.msgRed1 error')
 					}
-				}) 
-				
-				$('#btn').click(function () {
-					if (s && s1 && s2) 
-					{ 
-						alert('注册成功！'); 
-					}
-					else { 
-						alert('注册失败！');
-					}
-				}) 
+				});
 
 				var oCheck = document.getElementById("check");
 				// 调用自己的函数，来获取当前页面中的 cookie
 				var username = getCookie("username");
 				var username1 = getCookie("username1");
 				var password = getCookie("password");
+				var password2 = getCookie("password2");
 			
-				if (username && username1 && password)
+				if (username && username1 && password && password2)
 				{
 					$("#username").val(username);
 					$("#username1").val(username1);
 					$("#password").val(password);
+					$("#password2").val(password2);
 				}
 			
 				$("#btn").click(function() {
@@ -90,13 +59,14 @@
 						var strUsername = $("#username").val();
 						var strUsername1 = $("#username1").val();
 						var strPassword = $("#password").val();
+						var strPassword2 = $("#password2").val();
 						
 						// 调用自己写的函数，实现添加 cookie
 						addCookie("username", strUsername, 7);
 						addCookie("username1", strUsername1, 7);
 						addCookie("password", strPassword, 7);
+						addCookie("password2", strPassword2, 7);
 					}
-					alert("注册成功！");
 				});
 						
 			});
@@ -105,7 +75,7 @@
 	<body>
 		<div id="top">
 			<span><img src='../css/img/login-logo.png'/></span>
-			<span class='msg'>已注册?<a href="#">登录</a></span>
+			<span class='msg'>已注册?<a href="login.html">登录</a></span>
 		</div>
 		
 		<div id="resignList">

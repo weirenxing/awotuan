@@ -49,11 +49,11 @@
 					+arr[i].tex+'</span>').appendTo($tr2);
 					$('<td>').html("闫森：黑色    尺码：L").appendTo($tr2);
 					$('<td class="price-o">').html(arr[i].price).appendTo($tr2);
-					$('<td class="yellow">').html('<p class="pCenter">'+'<span class="tab-old">'+"-"+'</span>'+'<input type="text" class="tab-tex" value="1"/>'+'<span class="tab-add">'+"+"+'</span>'+'</p>').appendTo($tr2);
+					$('<td class="yellow">').html('<p class="pCenter">'+'<span class="tab-old">'+"-"+'</span>'+'<input type="text" class="tab-tex" value="0"/>'+'<span class="tab-add">'+"+"+'</span>'+'</p>').appendTo($tr2);
 					$('<td class="sumPrice">').html("59.00").appendTo($tr2);
 					$('<td class="del">').html("删除").appendTo($tr2);
-					$("<td colspan='6'>").html('<label class="check1">'+'<input type="checkbox" value="全选" />'+"全选"+'</label>'+"<p class='pRight'>"+'数量：'+'<span>'+"1"+'</span>'+"件  金额：￥"+'<span>'+arr[i].price+'</span>'+ "邮费：￥"+'<span>'+'0'+'</span>'+'</p>').appendTo($tr3);
-					$('<td colspan="6" class="tRight"></td>').html("总额："+"<span>"+arr[i].price+"</span>").appendTo($tr4);
+					$("<td colspan='6'>").html('<label class="check1">'+'<input type="checkbox" value="全选" />'+"全选"+'</label>'+"<p class='pRight'>"+'数量：'+'<span class="span1">'+"0"+'</span>'+"件  金额：￥"+'<span class="sPrice">'+0.00+'</span>'+ "邮费：￥"+'<span>'+'0'+'</span>'+'</p>').appendTo($tr3);
+					$('<td colspan="6" class="tRight"></td>').html("总额："+"<span>"+0.00+"</span>").appendTo($tr4);
 					$tr2.appendTo($tbody);
 					$tr3.appendTo($tbody);
 					$tr4.appendTo($tbody);
@@ -74,6 +74,9 @@
 					sum=newPrice*num;
 					console.log(sum);
 					$(this).parents("td").next("td").html(sum+".00");
+					$(this).parents("tr").next("tr").find(".span1").html(i-1);
+					$(this).parents("tr").next("tr").find(".sPrice").html(sum+".00");
+					$(this).parents("tr").next("tr").next("tr").find("span").html(sum+".00");
 				});
 				$('.tab-old').on('click',function(){					
 					$(this).next("input").val(i--);	

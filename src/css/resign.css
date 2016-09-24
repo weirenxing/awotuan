@@ -3,6 +3,8 @@ body{background:#f3f1f4;}
 #top .msg{display:inline-block;color:white;background:#555555;width:140px;height:30px;border-radius:12px;line-height: 30px;text-align: center;font-size:14px;margin-left:100px;}
 #top .msg a{color:#fffaa8;}
 
+.error{color:#f00;margin-left: 120px;height:20px;line-height: 20px;}
+
 #resignList{width:100%;height:620px;padding-left:120px;}
 .resign{width:475px;min-height: 420px;background:#eeecef;border:1px solid #e1e0e2;}
 .resign .log1{margin:27px 0 0 20px;width:435px;height:28px;border-bottom:1px solid #dddddd;}

@@ -32,7 +32,7 @@
 #nav{width:1000px;height:40px;margin: 0 auto;}
 #nav li{float: left;line-height: 40px;}
 #nav li a{color:white;padding:13px 20px;}
-#nav li a:active{color:black;background:white;}
+#nav li a:hover{color:black;background:white;}
 
 /*city*/
 .city{z-index:100;display:none;width:490px;height:220px;border:1px solid #CCC;position: absolute;left:20%;top:85px;border-radius:8px;background: #fbfbfb;}

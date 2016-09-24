@@ -33,7 +33,8 @@ body{background: #f6f6f6;width:100%;height:100%;}
 .floorList li .buyImg,.floorList4 li .buyImg{transition: .1s transform;
   transform: translateZ(0);width:288px;height:190px;border:1px solid #fcdf8e ;overflow: hidden;}
 .floorList li .buyImg:hover{transform: scale(1.5, 1.5);
-  transition: .3s transform;z-index: 3;}
+  transition: .3s transform;z-index: 3;border:none;opacity:0.9;}
+.floorList li .price,.floorList4 li .price{width:288px;height:46px;position:relative;line-height:46px;border-radius:0 0 5px 5px;background: #fcffca;color:#ef340b;font-size: 27px;border:1px solid #fcdf8e;font-weight:bolder;}
 .floorList li .price,.floorList4 li .price{width:288px;height:46px;position:relative;line-height:46px;border-radius:0 0 5px 5px;background: #fcffca;color:#ef340b;font-size: 27px;border:1px solid #fcdf8e;font-weight:bolder;}
 .price .btn1{display:inline-block;font-size: 19px;color:#fff;width:70px;height:30px;position:absolute;right:15px;top:8px;border-radius:6px;text-align:center;line-height:30px;background: #ffa46f;}
 .cost{color:#555555;margin-top: 10px;}
